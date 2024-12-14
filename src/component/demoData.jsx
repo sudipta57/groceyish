@@ -1,0 +1,126 @@
+export const categories = [
+  {
+    id: 1,
+    name: "Peach",
+    count: 20,
+    img: "/landing/explore/img-1.png",
+    bg: "#FEEFEA",
+  },
+  {
+    id: 2,
+    name: "Vegetables",
+    count: 220,
+    img: "/landing/explore/img-2.png",
+    bg: "#FFF3FF",
+  },
+  {
+    id: 3,
+    name: "Strawberry",
+    count: 10,
+    img: "/landing/explore/img-3.png",
+    bg: "#DEF9EC",
+  },
+  {
+    id: 4,
+    name: "Apple",
+    count: 40,
+    img: "/landing/explore/img-4.png",
+    bg: "#F2FCE4",
+  },
+  {
+    id: 5,
+    name: "Orange",
+    count: 23,
+    img: "/landing/explore/img-5.png",
+    bg: "#FEEFEA",
+  },
+  {
+    id: 6,
+    name: "Potato",
+    count: 3,
+    img: "/landing/explore/img-6.png",
+    bg: "#ECFFEC",
+  },
+  {
+    id: 7,
+    name: "Carrot",
+    count: 9,
+    img: "/landing/explore/img-7.png",
+    bg: "#FFFCEB",
+  },
+];
+
+export const featureProducts = [
+  {
+    id: 1,
+    name: "Redish 500g",
+    rating: 4.5,
+    ratingCount: 40,
+    reviews: "Reviews",
+    category: "Pulses",
+    price: "$28.85",
+    oldPrice: "$32.80",
+    discount: "Save 12%",
+    img: "/landing/fetured/img-1.png", // Replace with actual image path
+  },
+  {
+    id: 2,
+    name: "Potatos 1kg",
+    rating: 4.0,
+    ratingCount: 10,
+    reviews: "Reviews",
+    category: "Meat",
+    price: "$12.85",
+    oldPrice: "$13.80",
+    discount: "Save 8%",
+    img: "/landing/fetured/img-2.png", // Replace with actual image path
+  },
+  {
+    id: 3,
+    name: "Tomatos 200g",
+    rating: 3.5,
+    ratingCount: 4,
+    reviews: "Reviews",
+    category: "Snacks",
+    price: "$21.85",
+    oldPrice: "$22.80",
+    discount: "Save 2%",
+    img: "/landing/fetured/img-3.png", // Replace with actual image path
+  },
+  {
+    id: 4,
+    name: "Broccoli 1kg",
+    rating: 4.0,
+    ratingCount: 34,
+    reviews: "Reviews",
+    category: "Frozen",
+    price: "$17.99",
+    oldPrice: "$22.80",
+    discount: "Save 10%",
+    img: "/landing/fetured/img-4.png", // Replace with actual image path
+  },
+  {
+    id: 5,
+    name: "Green Beans 250g",
+    rating: 4.5,
+    ratingCount: 18,
+    reviews: "Reviews",
+    category: "Vegetables",
+    price: "$34.85",
+    oldPrice: "$36.80",
+    discount: "Save 12%",
+    img: "/landing/fetured/img-5.png", // Replace with actual image path
+  },
+  {
+    id: 6,
+    name: "Blue Diamond Almonds Lightly Salted Vegetables",
+    rating: 4.5,
+    ratingCount: 18,
+    reviews: "Reviews",
+    category: "Vegetables",
+    price: "$34.85",
+    oldPrice: "$36.80",
+    discount: "Save 12%",
+    img: "/landing/fetured/img-5.png", // Replace with actual image path
+  },
+];
