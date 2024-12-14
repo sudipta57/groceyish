@@ -39,23 +39,6 @@ const products = [
 export default function Wishlist() {
   const navigate = useNavigate();
 
-  // loading component
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate a 2-second loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
     // <div className="bg-[#C5EAD9C7] max-w-[1500px] mx-auto">
     <div className="bg-[#C5EAD9C7] md:mt-36 mt-16">

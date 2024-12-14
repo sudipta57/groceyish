@@ -204,6 +204,14 @@ const TopBar = () => {
                   My cart <span className="text-green-500">$21</span>
                 </span>
               </Link>
+              <header>
+                <SignedOut>
+                  <SignInButton />
+                </SignedOut>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </header>
               <div className="text-green-500 flex items-center">
                 <FaPhone className="mr-2" /> 1233-7777
                 <span className="ml-2 text-gray-500">24/7 support center</span>

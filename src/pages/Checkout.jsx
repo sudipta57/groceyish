@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -7,7 +7,6 @@ import {
 } from "react-icons/fa";
 
 import { HiHome } from "react-icons/hi";
-import Loading from "../component/Loading";
 
 export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState("Cash on Delivery");
@@ -16,22 +15,6 @@ export default function Checkout() {
     setPaymentMethod(e.target.value);
   };
 
-  // loading component
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate a 2-second loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
   return (
     // <div className="bg-[#C5EAD9C7] max-w-[1500px] mx-auto">
     <div className="bg-[#C5EAD9C7] md:mt-36 mt-16">

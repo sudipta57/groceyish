@@ -234,20 +234,7 @@ const Demo = () => {
   // State to track the selected category
   const [selectedCategory, setSelectedCategory] = useState(null);
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    // Simulate a 2-second loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
   // Slider settings
   const settings = {
     dots: true,

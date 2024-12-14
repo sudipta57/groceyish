@@ -167,20 +167,6 @@ const ProductList = ({ title }) => {
 const Banner = () => {
   const navigate = useNavigate();
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate a 2-second loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
   return (
     <>
       <div className="bg-[#C5EAD9C7]">

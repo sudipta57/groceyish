@@ -1,29 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { HiHome } from "react-icons/hi";
+import React, { useState } from "react";
 import {
   FaFacebookF,
   FaInstagram,
   FaPinterestP,
   FaTwitter,
 } from "react-icons/fa";
-import Loading from "./Loading";
+import { HiHome } from "react-icons/hi";
+import { Link } from "react-router-dom";
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    // Simulate a 2-second loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
   return (
     <div className="bg-[#C5EAD9C7]">
       <br></br>

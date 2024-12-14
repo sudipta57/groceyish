@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -7,7 +7,6 @@ import {
 } from "react-icons/fa";
 import { HiHome } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import Loading from "../component/Loading";
 
 export default function ProductQuick() {
   const [mainImage, setMainImage] = useState("/product_quick/Product_main.png");
@@ -59,22 +58,6 @@ export default function ProductQuick() {
     },
   ];
 
-  // loading component
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate a 2-second loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
   return (
     <div className="bg-[#C5EAD9C7]">
       <div
@@ -255,71 +238,79 @@ export default function ProductQuick() {
           </div>
         </div>
 
-       {/* Related Product Section */}
-<div className="bg-white w-full mt-4">
-  <div className="p-6 font-sans max-w-7xl mx-auto">
-    <h2 className="text-xl sm:text-2xl font-bold text-center mb-6">
-      Related Products
-    </h2>
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-1 md:grid-cols-4 sm:gap-6">
-      {products.map((product) => (
-        <div
-          key={product.id}
-          className={`relative border rounded-lg p-4 shadow-md ${
-            product.highlighted ? "border-green-500" : "border-gray-200"
-          }`}
-        >
-          {/* Sale Badge */}
-          {product.sale && (
-            <span className="absolute top-2 left-2 text-xs sm:text-sm text-white bg-red-500 px-2 py-1 rounded">
-              Sale 50%
-            </span>
-          )}
-          {/* Product Image */}
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-40 sm:h-48 object-cover rounded mb-4"
-          />
-          {/* Product Details */}
-          <div className="flex justify-between items-center">
-            <div>
-              <h3 className="text-sm sm:text-lg font-semibold text-gray-800 mb-2">
-                {product.name}
-              </h3>
-              <div className="flex items-center space-x-2 mb-2">
-                {product.originalPrice && (
-                  <span className="text-gray-400 line-through text-xs sm:text-sm">
-                    {product.originalPrice}
-                  </span>
-                )}
-                <span className="text-green-600 text-sm sm:text-xl font-bold">
-                  {product.price}
-                </span>
-              </div>
-              <div className="flex items-center space-x-1 mb-4">
-                {[...Array(5)].map((_, index) => (
-                  <span
-                    key={index}
-                    className={`text-yellow-400 ${
-                      index < product.rating ? "" : "text-gray-300"
-                    }`}
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
+        {/* Related Product Section */}
+        <div className="bg-white w-full mt-4">
+          <div className="p-6 font-sans max-w-7xl mx-auto">
+            <h2 className="text-xl sm:text-2xl font-bold text-center mb-6">
+              Related Products
+            </h2>
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-1 md:grid-cols-4 sm:gap-6">
+              {products.map((product) => (
+                <div
+                  key={product.id}
+                  className={`relative border rounded-lg p-4 shadow-md ${
+                    product.highlighted ? "border-green-500" : "border-gray-200"
+                  }`}
+                >
+                  {/* Sale Badge */}
+                  {product.sale && (
+                    <span className="absolute top-2 left-2 text-xs sm:text-sm text-white bg-red-500 px-2 py-1 rounded">
+                      Sale 50%
+                    </span>
+                  )}
+                  {/* Product Image */}
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-40 sm:h-48 object-cover rounded mb-4 cursor-pointer"
+                    onClick={() => {
+                      navigate("/product_quick");
+                    }}
+                  />
+                  {/* Product Details */}
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h3 className="text-sm sm:text-lg font-semibold text-gray-800 mb-2">
+                        {product.name}
+                      </h3>
+                      <div className="flex items-center space-x-2 mb-2">
+                        {product.originalPrice && (
+                          <span className="text-gray-400 line-through text-xs sm:text-sm">
+                            {product.originalPrice}
+                          </span>
+                        )}
+                        <span className="text-green-600 text-sm sm:text-xl font-bold">
+                          {product.price}
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-1 mb-4">
+                        {[...Array(5)].map((_, index) => (
+                          <span
+                            key={index}
+                            className={`text-yellow-400 ${
+                              index < product.rating ? "" : "text-gray-300"
+                            }`}
+                          >
+                            ★
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Add to Cart Button */}
+                    <button
+                      className="px-3 py-2 text-sm sm:px-4 sm:py-2 sm:text-base bg-[#DEF9EC] text-[#3BB77E] rounded hover:bg-[#a9edcd]"
+                      onClick={() => {
+                        setDrawerOpen(true);
+                      }}
+                    >
+                      🛒 Add
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
-            {/* Add to Cart Button */}
-            <button className="px-3 py-2 text-sm sm:px-4 sm:py-2 sm:text-base bg-[#DEF9EC] text-[#3BB77E] rounded hover:bg-[#a9edcd]">
-              🛒 Add
-            </button>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</div>
 
         <div className="bg-[#F7F7F7] mt-4 py-4 px-14 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
           {/* Left Text Section */}
@@ -388,7 +379,7 @@ const Drawer = ({ isOpen, onClose }) => {
       <div className="p-4 space-y-4">
         <div className="flex items-center gap-4 border-b pb-4">
           <img
-            src="https://via.placeholder.com/60"
+            src="/product_quick/Product_main.png"
             alt="Chinese Cabbage"
             className="w-16 h-16 object-cover"
           />
@@ -401,12 +392,12 @@ const Drawer = ({ isOpen, onClose }) => {
 
         <div className="flex items-center gap-4 border-b pb-4">
           <img
-            src="https://via.placeholder.com/60"
+            src="/shop-filter/products/p-4.png"
             alt="Green Apple"
             className="w-16 h-16 object-cover"
           />
           <div className="flex-1">
-            <p className="font-semibold">Green Apple</p>
+            <p className="font-semibold">Brinjal</p>
             <p className="text-sm text-gray-600">1 kg × ₹1,187.00</p>
           </div>
           <button className="text-red-500">×</button>
