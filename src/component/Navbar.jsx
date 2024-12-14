@@ -21,7 +21,9 @@ import {
 } from "react-icons/fa";
 const TopBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+  };
   return (
     <>
       {/* Navigation Bar and Header Section */}
@@ -150,24 +152,38 @@ const TopBar = () => {
 
             {/* Links and Contact Info */}
             <div className="flex flex-col items-start mt-4 space-y-4 ps-10 md:ps-0">
-              <Link to="/" className="flex items-center text-gray-700">
+              <Link
+                to="/"
+                className="flex items-center text-gray-700"
+                onClick={handleLinkClick}
+              >
                 Home
               </Link>
               <Link
                 to="/shop-filter"
                 className="flex items-center text-gray-700"
+                onClick={handleLinkClick}
               >
                 Shop
               </Link>
-              <Link to="/about" className="flex items-center text-gray-700">
+              <Link
+                to="/about"
+                className="flex items-center text-gray-700"
+                onClick={handleLinkClick}
+              >
                 About Us
               </Link>
-              <Link to="/contact" className="flex items-center text-gray-700">
+              <Link
+                to="/contact"
+                className="flex items-center text-gray-700"
+                onClick={handleLinkClick}
+              >
                 Contact Us
               </Link>
               <Link
                 to="/wishlist"
                 className="relative flex items-center text-gray-700"
+                onClick={handleLinkClick}
               >
                 <FaHeart className="text-xl" />
                 <span className="absolute top-0 right-0 transform translate-x-1 -translate-y-1 bg-green-500 text-white text-xs rounded-full px-1">
@@ -178,6 +194,7 @@ const TopBar = () => {
               <Link
                 to="/mycart"
                 className="relative flex items-center text-gray-700"
+                onClick={handleLinkClick}
               >
                 <FaShoppingCart className="text-xl" />
                 <span className="absolute top-0 right-0 transform translate-x-1 -translate-y-1 bg-green-500 text-white text-xs rounded-full px-1">

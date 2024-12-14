@@ -23,7 +23,7 @@ import UserDashboard from "./pages/UserDashboard";
 function App() {
   return (
     <Router>
-      {/* <ScrollToTop /> */}
+      <ScrollToTop />
       <TopBar />
       <Routes>
         {/* Define your routes here */}
