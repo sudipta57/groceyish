@@ -35,7 +35,6 @@ export default function ProductQuick() {
       price: "₹1,187",
       originalPrice: "₹2,187",
       image: "/shop-filter/products/p-2.png",
-
       rating: 5,
       sale: true,
     },
@@ -44,16 +43,13 @@ export default function ProductQuick() {
       name: "Corn",
       price: "₹170",
       image: "/shop-filter/products/p-3.png",
-
       rating: 5,
-      highlighted: true,
     },
     {
       id: 4,
       name: "Brinjal",
       price: "₹340",
       image: "/shop-filter/products/p-4.png",
-
       rating: 4,
     },
   ];
