@@ -1,12 +1,6 @@
+
 {
-  "routes": [
-    {
-      "src": "^/.*\\.(js|css|json|png|jpg|jpeg|gif|svg|ico|txt|woff|woff2|ttf|otf|eot|wasm)$",
-      "dest": "/$0"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
