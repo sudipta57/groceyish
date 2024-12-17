@@ -40,110 +40,115 @@ const DailyBestSells = () => {
 
   return (
     <div className="w-full mx-auto p-6 bg-[#FFFFFF]">
-    {/* Header Section */}
-    <div className="flex flex-col sm:flex-row justify-center items-center space-x-0 sm:space-x-20 text-center mb-6">
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-0">
-        Daily Best Sells
-      </h2>
-  
-      <div className="flex space-x-4 sm:space-x-10 text-sm sm:text-base font-semibold text-gray-600 ml-0">
-        <span className="text-green-600 cursor-pointer">Featured</span>
-        <span className="cursor-pointer">Popular</span>
-        <span className="cursor-pointer">New</span>
-  
-        {/* Countdown and Arrows */}
-        <div className="flex items-center space-x-4">
-          <Countdown date={expirationTime} renderer={renderer} />
+      {/* Header Section */}
+      <div className="flex flex-col sm:flex-row justify-center items-center space-x-0 sm:space-x-20 text-center mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-0">
+          Daily Best Sells
+        </h2>
+
+        <div className="flex space-x-4 sm:space-x-10 text-sm sm:text-base font-semibold text-gray-600 ml-0">
+          <span className="text-green-600 cursor-pointer">Featured</span>
+          <span className="cursor-pointer">Popular</span>
+          <span className="cursor-pointer">New</span>
+
+          {/* Countdown and Arrows */}
+          <div className="flex items-center space-x-4">
+            <Countdown date={expirationTime} renderer={renderer} />
+          </div>
+          <div className="flex items-center space-x-4">
+            {/* Custom Previous Arrow */}
+            <div
+              onClick={() => sliderRef.current?.slickPrev()}
+              className="cursor-pointer"
+            >
+              <img src="/landing/Left.png" alt="Previous" className="w-6 h-6" />
+            </div>
+
+            {/* Custom Next Arrow */}
+            <div
+              onClick={() => sliderRef.current?.slickNext()}
+              className="cursor-pointer"
+            >
+              <img src="/landing/right.png" alt="Next" className="w-6 h-6" />
+            </div>
+          </div>
         </div>
-        <div className="flex items-center space-x-4">
-          {/* Custom Previous Arrow */}
-          <div onClick={() => sliderRef.current?.slickPrev()} className="cursor-pointer">
-            <img src="/landing/Left.png" alt="Previous" className="w-6 h-6" />
-          </div>
-  
-          {/* Custom Next Arrow */}
-          <div onClick={() => sliderRef.current?.slickNext()} className="cursor-pointer">
-            <img src="/landing/right.png" alt="Next" className="w-6 h-6" />
-          </div>
+      </div>
+
+      {/* Main Content Section */}
+      <div className="flex flex-col sm:flex-row max-w-[1100px] mx-auto items-center justify-center space-y-6 sm:space-y-0 sm:space-x-6">
+        {/* Product Cards Slider */}
+        <div className="w-full sm:w-3/4">
+          <Slider ref={sliderRef} {...settings}>
+            <ProductCard
+              image="/landing/daily-1.png"
+              category="Coffee & Teas"
+              title="Coffee 1kg"
+              rating={4}
+              price="₹20"
+              originalPrice="₹25"
+              sold="20/50"
+            />
+            <ProductCard
+              image="/landing/daily-2.png"
+              category="Meat"
+              title="Halal Sausage 350g"
+              rating={4}
+              price="₹4"
+              originalPrice="₹10"
+              sold="7/20"
+            />
+            <ProductCard
+              image="/landing/daily-3.png"
+              category="Coffee & Teas"
+              title="Green Tea 250g"
+              rating={4}
+              price="₹3"
+              originalPrice="₹7"
+              sold="32/50"
+            />
+            <ProductCard
+              image="/landing/daily-4.png"
+              category="Vegetables"
+              title="Onion 1kg"
+              rating={4}
+              price="₹0.50"
+              originalPrice="₹2"
+              sold="2/10"
+            />
+          </Slider>
+        </div>
+
+        {/* Sidebar Section */}
+        <div className="w-full sm:w-1/4 bg-yellow-50 p-6 rounded-lg">
+          <h3 className="text-2xl font-bold mb-4">10% OFF</h3>
+          <p className="text-gray-600 mb-4">
+            For new members, sign up at the first time
+          </p>
+          <form className="space-y-4">
+            <div>
+              <label className="text-sm font-medium">Email address</label>
+              <input
+                type="email"
+                placeholder="johndoe@gmail.com"
+                className="w-full p-2 border border-gray-300 rounded mt-1"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium">Password</label>
+              <input
+                type="password"
+                placeholder="Maximum 8 characters"
+                className="w-full p-2 border border-gray-300 rounded mt-1"
+              />
+            </div>
+            <button className="w-full bg-green-500 text-white py-2 rounded mt-4 font-semibold">
+              Register Now
+            </button>
+          </form>
         </div>
       </div>
     </div>
-  
-    {/* Main Content Section */}
-    <div className="flex flex-col sm:flex-row max-w-[1100px] mx-auto items-center justify-center space-y-6 sm:space-y-0 sm:space-x-6">
-      {/* Product Cards Slider */}
-      <div className="w-full sm:w-3/4">
-        <Slider ref={sliderRef} {...settings}>
-          <ProductCard
-            image="/landing/daily-1.png"
-            category="Coffee & Teas"
-            title="Coffee 1kg"
-            rating={4}
-            price="$20"
-            originalPrice="$25"
-            sold="20/50"
-          />
-          <ProductCard
-            image="/landing/daily-2.png"
-            category="Meat"
-            title="Halal Sausage 350g"
-            rating={4}
-            price="$4"
-            originalPrice="$10"
-            sold="7/20"
-          />
-          <ProductCard
-            image="/landing/daily-3.png"
-            category="Coffee & Teas"
-            title="Green Tea 250g"
-            rating={4}
-            price="$3"
-            originalPrice="$7"
-            sold="32/50"
-          />
-          <ProductCard
-            image="/landing/daily-4.png"
-            category="Vegetables"
-            title="Onion 1kg"
-            rating={4}
-            price="$0.50"
-            originalPrice="$2"
-            sold="2/10"
-          />
-        </Slider>
-      </div>
-  
-      {/* Sidebar Section */}
-      <div className="w-full sm:w-1/4 bg-yellow-50 p-6 rounded-lg">
-        <h3 className="text-2xl font-bold mb-4">10% OFF</h3>
-        <p className="text-gray-600 mb-4">
-          For new members, sign up at the first time
-        </p>
-        <form className="space-y-4">
-          <div>
-            <label className="text-sm font-medium">Email address</label>
-            <input
-              type="email"
-              placeholder="johndoe@gmail.com"
-              className="w-full p-2 border border-gray-300 rounded mt-1"
-            />
-          </div>
-          <div>
-            <label className="text-sm font-medium">Password</label>
-            <input
-              type="password"
-              placeholder="Maximum 8 characters"
-              className="w-full p-2 border border-gray-300 rounded mt-1"
-            />
-          </div>
-          <button className="w-full bg-green-500 text-white py-2 rounded mt-4 font-semibold">
-            Register Now
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-  
   );
 };
 
@@ -197,7 +202,7 @@ const Stars = ({ rating }) => (
     {[...Array(5)].map((_, i) => (
       <svg
         key={i}
-        className={`w-4 h-4 ${
+        className={`w-4 h-4 ₹{
           i < rating ? "text-yellow-400" : "text-gray-300"
         }`}
         fill="currentColor"

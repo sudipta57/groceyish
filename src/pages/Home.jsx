@@ -88,32 +88,32 @@ const Card = ({ product }) => {
 const topSalesproducts = [
   {
     name: "Orange 1kg",
-    price: "$2",
-    oldPrice: "$3.99",
+    price: "₹2",
+    oldPrice: "₹3.99",
     rating: 4,
     reviews: 4,
     img: "/landing/fruits/img-1.png", // Update with the correct path
   },
   {
     name: "Vegetables 1kg",
-    price: "$2",
-    oldPrice: "$3.99",
+    price: "₹2",
+    oldPrice: "₹3.99",
     rating: 4,
     reviews: 4,
     img: "/landing/fruits/img-2.png", // Update with the correct path
   },
   {
     name: "Strawberry 1kg",
-    price: "$2",
-    oldPrice: "$3.99",
+    price: "₹2",
+    oldPrice: "₹3.99",
     rating: 4,
     reviews: 4,
     img: "/landing/fruits/img-3.png",
   },
   {
     name: "Carrot 1kg",
-    price: "$2",
-    oldPrice: "$3.99",
+    price: "₹2",
+    oldPrice: "₹3.99",
     rating: 4,
     reviews: 4,
     img: "/landing/fruits/img-4.png", // Update with the correct path
@@ -459,10 +459,10 @@ const Banner = () => {
               Free delivery
             </button>
             <h1 className="text-[#253D4E] text-[20px] sm:text-[24px] lg:text-[28px] font-[600] mb-4">
-              Free delivery over $50
+              Free delivery over ₹50
             </h1>
             <p className="max-w-sm text-[#838383] text-[14px] sm:text-[16px] lg:text-[18px] font-[500] mt-6">
-              Purchase $50 worth of products and get free delivery anywhere.
+              Purchase ₹50 worth of products and get free delivery anywhere.
             </p>
             <button className="bg-[#3BB77E] text-white p-4 w-32 sm:w-40 mt-14">
               Shop Now &#8594;
