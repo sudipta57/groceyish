@@ -454,7 +454,7 @@ const Banner = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 bg-[#FFFFFF] gap-4 px-4 sm:px-6 lg:px-10 my-10 p-4">
           {/* First Banner */}
-          <div className="flex flex-col justify-center bg-[url('landing/banner-2.png')] bg-cover min-h-[300px] p-6 sm:p-10">
+          <div className="flex flex-col justify-center bg-[url('/landing/banner-2.png')] bg-cover min-h-[300px] p-6 sm:p-10">
             <button className="bg-[#FFD480] text-white p-2 w-32 sm:w-40 rounded-sm mb-4">
               Free delivery
             </button>
@@ -470,7 +470,7 @@ const Banner = () => {
           </div>
 
           {/* Second Banner */}
-          <div className="flex flex-col justify-center bg-[url('landing/banner-3.png')] bg-cover min-h-[300px] p-6 sm:p-10">
+          <div className="flex flex-col justify-center bg-[url('/landing/banner-3.png')] bg-cover min-h-[300px] p-6 sm:p-10">
             <button className="bg-[#3BB77E] text-white p-2 w-32 sm:w-40 rounded-sm mb-4">
               60% off
             </button>
