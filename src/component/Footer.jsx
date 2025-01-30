@@ -93,7 +93,7 @@ const Footer = () => {
       {/* Footer Information */}
       <div className="py-4">
         <div className="container mx-auto px-6 flex flex-wrap justify-between items-center text-center md:text-left">
-          Design by Secwebxperts. All Rights Reserved
+          Copyright@GROCEYISH | developed by SECWEBXPERTS PVT. LTD.{" "}
           <img src="/landing/footer-img.png" alt="" />
           <div className="flex space-x-4">
             <img src="/landing/footer-icon1.png" alt="" />
