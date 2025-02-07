@@ -470,7 +470,7 @@ const Banner = () => {
         <div className="bg-[#FFFFFF] my-4">
           <div className="max-w-[1100px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 bg-[#FFFFFF]  gap-4  mt-[-5px]">
             {/* First Banner */}
-            <div className="flex flex-col bg-[url('landing/banner-2.png')] w-full h-full p-4 bg-contain bg-no-repeat bg-center">
+            <div className="flex flex-col bg-[url('/landing/banner-2.png')] w-full h-full p-4 bg-contain bg-no-repeat bg-center">
               <div className="flex flex-col justify-center p-6 mt-10 mb-4">
                 <button className="bg-[#FFD480] text-[12px] text-white  w-[86px] h-[26px]">
                   Free delivery
@@ -488,10 +488,10 @@ const Banner = () => {
             </div>
 
             {/* Second Banner */}
-            <div className="flex flex-col bg-[url('landing/banner-3.png')] bg-contain bg-no-repeat p-4 bg-center w-full h-full">
+            <div className="flex flex-col bg-[url('/landing/banner-3.png')] bg-contain bg-no-repeat p-4 bg-center w-full h-full">
               <div className="flex flex-col justify-center p-6 mt-10 mb-4">
-              <button className="bg-[#3BB77E] text-[12px] text-white  w-[86px] h-[26px]">
-                 60% off
+                <button className="bg-[#3BB77E] text-[12px] text-white  w-[86px] h-[26px]">
+                  60% off
                 </button>
                 <h1 className="text-[#253D4E] text-[20px] sm:text-[24px] lg:text-[28px] font-[600] mt-4">
                   Organic Food
@@ -504,7 +504,6 @@ const Banner = () => {
                 </button>
               </div>
             </div>
-
           </div>
         </div>
 
