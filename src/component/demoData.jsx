@@ -113,7 +113,7 @@ export const featureProducts = [
   },
   {
     id: 6,
-    name: "Blue Diamond Almonds Lightly Salted Vegetables",
+    name: "Blue Diamond Almonds",
     rating: 4.5,
     ratingCount: 18,
     reviews: "Reviews",

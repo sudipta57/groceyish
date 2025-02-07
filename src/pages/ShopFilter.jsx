@@ -1,14 +1,7 @@
 import React, { useState } from "react";
-import {
-  FaChevronDown,
-  FaChevronUp,
-  FaFacebookF,
-  FaInstagram,
-  FaPinterestP,
-  FaTwitter,
-} from "react-icons/fa";
-import { HiHome } from "react-icons/hi";
+import { FaChevronDown, FaChevronRight, FaChevronUp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import NewsLetter from "../component/NewsLetter";
 const Vegetables = [
   {
     id: 1,
@@ -24,7 +17,7 @@ const Vegetables = [
     name: "Chanise Cabbage",
     price: 140.99,
     image: "path-to-image",
-    rating: 4.5,
+    rating: 3,
   },
   {
     id: 3,
@@ -32,7 +25,7 @@ const Vegetables = [
     name: "Corn",
     price: 180.99,
     image: "path-to-image",
-    rating: 4.5,
+    rating: 2,
     outOfStock: true,
   },
   {
@@ -41,7 +34,7 @@ const Vegetables = [
     name: "Brinjal",
     price: 140.99,
     image: "path-to-image",
-    rating: 4.5,
+    rating: 3,
   },
   {
     id: 5,
@@ -49,7 +42,7 @@ const Vegetables = [
     name: "Fresh Cauliflower",
     price: 140.99,
     image: "path-to-image",
-    rating: 4.5,
+    rating: 2,
   },
   {
     id: 6,
@@ -65,7 +58,7 @@ const Vegetables = [
     name: "Green Capsicum",
     price: 180.99,
     image: "path-to-image",
-    rating: 4.5,
+    rating: 5,
     outOfStock: true,
   },
   {
@@ -279,6 +272,15 @@ const FreshFruits = [
   },
   // Add the rest of the products
 ];
+
+const ratings = [
+  { stars: 5, label: "5.0" },
+  { stars: 4, label: "4.0 & up" },
+  { stars: 3, label: "3.0 & up" },
+  { stars: 2, label: "2.0 & up" },
+  { stars: 1, label: "1.0 & up" },
+];
+
 export default function ShopFilter() {
   const navigate = useNavigate();
   const [isCategoryExpanded, setisCategoryExpanded] = useState(true);
@@ -302,6 +304,44 @@ export default function ShopFilter() {
       setProducts(FreshFruits);
     }
   };
+  const [minPrice, setMinPrice] = useState(50);
+  const [maxPrice, setMaxPrice] = useState(1500);
+
+  const handleMinPriceChange = (e) => {
+    const value = parseInt(e.target.value, 10);
+    if (value <= maxPrice) {
+      setMinPrice(value);
+    }
+  };
+
+  const handleMaxPriceChange = (e) => {
+    const value = parseInt(e.target.value, 10);
+    if (value >= minPrice) {
+      setMaxPrice(value);
+    }
+  };
+  const [activeTags, setActiveTags] = useState([]);
+
+  const tags = [
+    "Healthy",
+    "Low Fat",
+    "Vegetarian",
+    "Kid Foods",
+    "Vitamins",
+    "Bread",
+    "Meat",
+    "Snacks",
+    "Lunch",
+    "Dinner",
+  ];
+
+  const toggleTag = (tag) => {
+    if (activeTags.includes(tag)) {
+      setActiveTags(activeTags.filter((activeTag) => activeTag !== tag));
+    } else {
+      setActiveTags([...activeTags, tag]);
+    }
+  };
 
   return (
     // <div className="bg-[#C5EAD9C7] max-w-[1500px] mx-auto">
@@ -309,429 +349,399 @@ export default function ShopFilter() {
       <br></br>
       <div className="text-[#ADADAD] bg-[url('/shop-filter/bg-banner.png')] bg-cover mt-36 min-h-[120px] items-center flex ps-32">
         <div className="flex items-center">
-          <HiHome />
-          <p>/ Categories / </p>
-          <p className="text-[#3BB77E]"> Vegetables</p>
+          <img src="/home-icon.png" alt="img" className="me-3" />
+          <FaChevronRight />
+          <p className="mx-3">Account </p>
+          <FaChevronRight />
+
+          <p className="text-[#3BB77E] ml-2">Vegetables</p>
         </div>
       </div>
-      <div className="bg-gray-50 min-h-screen flex mt-4">
-        {/* Left Section */}
-        <div className="w-1/4 bg-white  px-6 py-8">
-          {/* Filter Button */}
-          <div className="flex items-center justify-between mb-6">
-            <button className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full shadow-md">
-              <span>Filter</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+      <div className="bg-white">
+        <div className="max-w-[1500px] mx-auto min-h-screen mt-4 grid md:grid-cols-4">
+          {/* Left Section */}
+          <div className="md:col-span-1 bg-white  px-6 py-8">
+            {/* Filter Button */}
+            <div className="flex items-center justify-between mb-6">
+              <button className="flex items-center gap-2 bg-[#3BB77E] text-white px-4 py-2 rounded-full shadow-md">
+                <span>Filter</span>
+                <img src="/shop-filter/Filter.png" alt="filter" />
+              </button>
+            </div>
+
+            {/* Categories Section */}
+            <div className="mb-8">
+              <div
+                className="flex items-center justify-between cursor-pointer"
+                onClick={() => setisCategoryExpanded(!isCategoryExpanded)}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707v5.172a1 1 0 01-.293.707l-1.414 1.414a1 1 0 01-1.414 0L10 19.586a1 1 0 01-.293-.707V13a1 1 0 00-.293-.707L3.293 6.707A1 1 0 013 6V4z"
-                />
-              </svg>
-            </button>
-          </div>
+                <h4 className="text-lg font-bold mb-4">All Categories</h4>
+                {isCategoryExpanded ? (
+                  <div>
+                    <FaChevronUp className="text-[#1A1A1A]" />
+                  </div>
+                ) : (
+                  <div>
+                    <FaChevronDown className="text-[#1A1A1A]" />
+                  </div>
+                )}
+              </div>
+              {isCategoryExpanded && (
+                <ul className="space-y-2">
+                  {[
+                    { name: "Fresh Fruit", count: 25 },
+                    { name: "Vegetables", count: 150 },
+                    { name: "Cooking", count: 54 },
+                    { name: "Snacks", count: 47 },
+                    { name: "Beverages", count: 43 },
+                    { name: "Beauty & Health", count: 38 },
+                    { name: "Bread & Bakery", count: 15 },
+                  ].map((prod, index) => (
+                    <li
+                      key={index}
+                      className="flex space-x-2 items-center text-[#1A1A1A]"
+                    >
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="category"
+                          value={prod.name}
+                          checked={prod.name === category}
+                          onChange={handleCategory}
+                          className="hidden" // Hide the input
+                        />
+                        <span
+                          className={`w-5 h-5 flex items-center justify-center border-2 rounded-full ${
+                            prod.name === category
+                              ? "border-[#3BB77E] after:w-3 after:h-3 after:bg-[#3BB77E] after:rounded-full"
+                              : "border-gray-300"
+                          }`}
+                        ></span>
+                        {prod.name}
+                      </label>
 
-          {/* Categories Section */}
-          <div className="mb-8">
-            <div
-              className="flex items-center justify-between cursor-pointer"
-              onClick={() => setisCategoryExpanded(!isCategoryExpanded)}
-            >
-              <h4 className="text-lg font-bold mb-4">All Categories</h4>
-              {isCategoryExpanded ? (
-                <div>
-                  <FaChevronUp className="text-gray-600" />
-                </div>
-              ) : (
-                <div>
-                  <FaChevronDown className="text-gray-600" />
-                </div>
+                      <span className="text-gray-400">({prod.count})</span>
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
-            {isCategoryExpanded && (
-              <ul className="space-y-2">
-                {[
-                  { name: "Fresh Fruit", count: 25 },
-                  { name: "Vegetables", count: 150 },
-                  { name: "Cooking", count: 54 },
-                  { name: "Snacks", count: 47 },
-                  { name: "Beverages", count: 43 },
-                  { name: "Beauty & Health", count: 38 },
-                  { name: "Bread & Bakery", count: 15 },
-                ].map((prod, index) => (
-                  <li
-                    key={index}
-                    className="flex justify-between items-center text-gray-600"
-                  >
-                    <label className="flex items-center gap-2">
-                      <input
-                        type="radio"
-                        name="category"
-                        className="form-radio text-green-500"
-                        value={prod.name}
-                        checked={prod.name === category} // Make the radio selected
-                        onChange={handleCategory} // Trigger handler on change
-                      />
-                      {prod.name}
-                    </label>
-                    <span className="text-gray-400">({prod.count})</span>
-                  </li>
+
+            {/* Price Range Section */}
+            <div className="mb-8 border-t pt-5">
+              <div
+                className="flex items-center justify-between cursor-pointer"
+                onClick={() => setPriceExpanded(!isPriceExpanded)}
+              >
+                <h4 className="text-lg font-bold mb-4">Price</h4>
+                {isPriceExpanded ? (
+                  <div>
+                    <FaChevronUp className="text-gray-600" />
+                  </div>
+                ) : (
+                  <div>
+                    <FaChevronDown className="text-gray-600" />
+                  </div>
+                )}
+              </div>
+
+              {isPriceExpanded && (
+                <>
+                  <div className="relative flex items-center gap-2 mt-4">
+                    {/* Minimum Price Slider */}
+                    <input
+                      type="range"
+                      min="50"
+                      max="1500"
+                      value={minPrice}
+                      onChange={handleMinPriceChange}
+                      className="w-full accent-green-500"
+                    />
+                    {/* Maximum Price Slider */}
+                    <input
+                      type="range"
+                      min="50"
+                      max="1500"
+                      value={maxPrice}
+                      onChange={handleMaxPriceChange}
+                      className="w-full accent-green-500"
+                    />
+                  </div>
+
+                  {/* Price Display */}
+                  <p className="text-gray-600 mt-2">
+                    Price: ₹{minPrice} — ₹{maxPrice}
+                  </p>
+                </>
+              )}
+            </div>
+            {/* Rating Section */}
+            <div className="mb-8 border-t pt-5">
+              {/* Header */}
+              <div
+                className="flex items-center justify-between cursor-pointer"
+                onClick={() => setisRatingExpanded(!isRatingExpanded)}
+              >
+                <h4 className="text-lg font-bold mb-4">Rating</h4>
+                {isRatingExpanded ? (
+                  <FaChevronUp className="text-gray-600" />
+                ) : (
+                  <FaChevronDown className="text-gray-600" />
+                )}
+              </div>
+
+              {/* Rating Options */}
+              {isRatingExpanded &&
+                ratings.map((rating, index) => (
+                  <div key={index} className="flex items-center gap-2 mb-2">
+                    <input
+                      type="checkbox"
+                      className="form-checkbox accent-green-500 text-white border-gray-300 rounded"
+                    />
+                    <span className="flex items-center gap-1">
+                      {/* Stars */}
+                      {Array.from({ length: 5 }).map((_, starIndex) =>
+                        starIndex > rating.stars ? (
+                          <img src="/shop-filter/gray-star.png" alt="img" />
+                        ) : (
+                          <img src="/shop-filter/yellow-star.png" alt="img" />
+                        )
+                      )}
+                      {/* Label */}
+                      <span className="ml-2 text-sm text-gray-600">
+                        {rating.label}
+                      </span>
+                    </span>
+                  </div>
                 ))}
-              </ul>
-            )}
-          </div>
-
-          {/* Price Range Section */}
-          <div className="mb-8">
-            <div
-              className="flex items-center justify-between cursor-pointer"
-              onClick={() => setPriceExpanded(!isPriceExpanded)}
-            >
-              <h4 className="text-lg font-bold mb-4">Price</h4>
-
-              {isPriceExpanded ? (
-                <div>
-                  <FaChevronUp className="text-gray-600" />
-                </div>
-              ) : (
-                <div>
-                  <FaChevronDown className="text-gray-600" />
+            </div>
+            {/* Popular Tag Section */}
+            <div className="mb-8 border-t pt-5">
+              <div
+                className="flex items-center justify-between cursor-pointer"
+                onClick={() => setisPopularExpanded(!isPopularExpanded)}
+              >
+                <h4 className="text-lg font-bold mb-4">Popular Tag</h4>
+                {isPopularExpanded ? (
+                  <div>
+                    <FaChevronUp className="text-gray-600" />
+                  </div>
+                ) : (
+                  <div>
+                    <FaChevronDown className="text-gray-600" />
+                  </div>
+                )}
+              </div>
+              {isPopularExpanded && (
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      onClick={() => toggleTag(tag)}
+                      className={`px-3 py-1 rounded-full cursor-pointer text-sm ${
+                        activeTags.includes(tag)
+                          ? "bg-[#3BB77E] text-white"
+                          : "bg-[#F2F2F2] text-[#1A1A1A]"
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               )}
             </div>
-            {isPriceExpanded && (
-              <>
-                <div className="flex items-center gap-4">
-                  <input
-                    type="range"
-                    min="50"
-                    max="1500"
-                    className="w-full accent-green-500"
-                  />
-                </div>
-                <p className="text-gray-600 mt-2">Price: ₹50 — ₹1,500</p>
-              </>
-            )}
-          </div>
 
-          {/* Rating Section */}
-          <div className="mb-8">
-            <div
-              className="flex items-center justify-between cursor-pointer"
-              onClick={() => setisRatingExpanded(!isRatingExpanded)}
-            >
-              <h4 className="text-lg font-bold mb-4">Rating</h4>
-
-              {isRatingExpanded ? (
-                <div>
-                  <FaChevronUp className="text-gray-600" />
+            {/* Discount Section */}
+            <div className="relative text-center">
+              {/* Background Image */}
+              <img
+                src="/shop-filter/discount.png" // Replace with the actual image URL
+                alt="Discount Banner"
+                className="w-full object-cover rounded-t-lg"
+              />
+              {/* Overlay Content */}
+              <div className="absolute top-10 left-0 right-0 ">
+                <h4 className="text-2xl font-bold text-green-600">
+                  79% Discount
+                </h4>
+                <p className="text-gray-600 mt-2">on your first order</p>
+                <div className="mt-4 text-green-500 font-semibold flex items-center justify-center gap-1 cursor-pointer">
+                  Shop Now &gt;
                 </div>
-              ) : (
-                <div>
-                  <FaChevronDown className="text-gray-600" />
-                </div>
-              )}
+              </div>
             </div>
-            {isRatingExpanded &&
-              Array.from({ length: 5 }).map((_, index) => (
-                <div key={index} className="flex items-center gap-2 mb-2">
-                  <input
-                    type="checkbox"
-                    className="form-checkbox text-yellow-500"
+
+            {/* Sale Products Section */}
+            <div className="mt-5">
+              <h4 className="text-lg font-bold mb-4">Sale Products</h4>
+              {[
+                {
+                  name: "Red Capsicum",
+                  price: "₹1,697",
+                  oldPrice: "₹2,715",
+                  image: "/shop-filter/sale1.png", // Replace with the actual image URL
+                  rating: 4,
+                },
+                {
+                  name: "Chanise Cabbage",
+                  price: "₹1,781",
+                  oldPrice: "₹2,036",
+                  image: "/shop-filter/sale2.png", // Replace with the actual image URL
+                  rating: 4,
+                },
+                {
+                  name: "Green Capsicum",
+                  price: "₹1,697",
+                  oldPrice: "₹2,799",
+                  image: "/shop-filter/sale3.png", // Replace with the actual image URL
+                  rating: 3,
+                },
+              ].map((product, index) => (
+                <div
+                  key={index}
+                  className={`flex items-center gap-4 p-4 bg-white border-2 rounded-lg mb-4 hover:shadow-lg hover:border-[#3BB77E] transition duration-500 ${
+                    saleProductSelected &&
+                    product.name == saleProductSelected.name
+                      ? "border-[#3BB77E]"
+                      : ""
+                  }`}
+                  onClick={() => {
+                    setsaleProductSelected(product);
+                  }}
+                >
+                  {/* Product Image */}
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="h-16 w-16 object-cover rounded-md"
                   />
-                  <span className="flex items-center gap-1">
-                    {Array.from({ length: 5 }).map((_, starIndex) => (
-                      <svg
-                        key={starIndex}
-                        xmlns="http://www.w3.org/2000/svg"
-                        className={`h-4 w-4 ${
-                          starIndex <= index
-                            ? "text-yellow-500"
-                            : "text-gray-300"
-                        }`}
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.691h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.447a1 1 0 00-.364 1.118l1.286 3.958c.3.921-.755 1.688-1.538 1.118L10 13.011l-3.368 2.447c-.783.57-1.838-.197-1.538-1.118l1.286-3.958a1 1 0 00-.364-1.118L2.648 8.385c-.783-.57-.381-1.81.588-1.81h4.162a1 1 0 00.95-.691l1.286-3.957z" />
-                      </svg>
-                    ))}
-                  </span>
+
+                  {/* Product Details */}
+                  <div className="flex-grow">
+                    <h5 className="font-semibold text-gray-700">
+                      {product.name}
+                    </h5>
+                    <p className="text-sm text-gray-500">
+                      <span className="text-green-600 font-bold">
+                        {product.price}
+                      </span>{" "}
+                      <s className="text-gray-400">{product.oldPrice}</s>
+                    </p>
+
+                    {/* Rating Stars */}
+                    <div className="flex items-center mt-2">
+                      {Array.from({ length: 5 }).map((_, starIndex) => (
+                        <img src="/shop-filter/start.png" alt="rating" />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               ))}
-          </div>
-
-          {/* Popular Tag Section */}
-          <div className="mb-8">
-            <div
-              className="flex items-center justify-between cursor-pointer"
-              onClick={() => setisPopularExpanded(!isPopularExpanded)}
-            >
-              <h4 className="text-lg font-bold mb-4">Popular Tag</h4>
-              {isPopularExpanded ? (
-                <div>
-                  <FaChevronUp className="text-gray-600" />
-                </div>
-              ) : (
-                <div>
-                  <FaChevronDown className="text-gray-600" />
-                </div>
-              )}
             </div>
-            {isPopularExpanded && (
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Healthy",
-                  "Low Fat",
-                  "Vegetarian",
-                  "Kid Foods",
-                  "Vitamins",
-                  "Bread",
-                  "Meat",
-                  "Snacks",
-                  "Lunch",
-                  "Dinner",
-                ].map((tag, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full cursor-pointer hover:bg-gray-300"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
-
-          {/* Discount Section */}
-          <div className="relative text-center">
-            {/* Background Image */}
-            <img
-              src="/shop-filter/discount.png" // Replace with the actual image URL
-              alt="Discount Banner"
-              className="w-full object-cover rounded-t-lg"
-            />
-            {/* Overlay Content */}
-            <div className="absolute top-10 left-0 right-0 ">
-              <h4 className="text-2xl font-bold text-green-600">
-                79% Discount
-              </h4>
-              <p className="text-gray-600 mt-2">on your first order</p>
-              <div className="mt-4 text-green-500 font-semibold flex items-center justify-center gap-1 cursor-pointer">
-                Shop Now
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+          {/* Right Section */}
+          <div className="md:col-span-3 flex-grow p-6">
+            {/* Sort and Results */}
+            <div className="flex justify-between items-center mb-6">
+              <div className="flex items-center space-x-4">
+                <label htmlFor="sort" className="text-gray-600 font-medium">
+                  Sort by:
+                </label>
+                <select
+                  id="sort"
+                  className="border border-gray-300 rounded-md p-2 text-sm text-gray-700"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
+                  <option value="latest">Latest</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                </select>
+              </div>
+              <div className="text-gray-600 font-[400]">
+                <strong className="text-black">52</strong> Results Found
+              </div>
+            </div>
+
+            {/* Product Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {products.map((product) => (
+                <div
+                  key={product.id}
+                  className="border border-gray-200 rounded-md p-4 bg-white relative group hover:shadow-lg hover:border-[#3BB77E] transition duration-500"
+                >
+                  {/* Badges */}
+                  {product.outOfStock && (
+                    <div className="absolute top-2 left-2 bg-black text-white text-xs px-2 py-1 rounded z-10">
+                      Out of Stock
+                    </div>
+                  )}
+                  {product.sale && (
+                    <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded z-10">
+                      Sale 50%
+                    </div>
+                  )}
+
+                  {/* Hover Icons */}
+                  <div className="absolute right-3 top-3 space-y-1 hidden group-hover:flex flex-col items-center z-10">
+                    <img
+                      src="/shop-filter/wishlist-icon.png"
+                      alt="wishlist icon"
+                      className="cursor-pointer"
+                    />
+                    <img
+                      src="/shop-filter/view-icon.png"
+                      alt="view icon"
+                      className="cursor-pointer"
+                    />
+                  </div>
+
+                  {/* Product Image */}
+                  <img
+                    src={product.img}
+                    alt={product.name}
+                    className="object-cover mb-4 cursor-pointer w-full h-48 rounded-md"
+                    onClick={() => navigate("/product_quick")}
                   />
-                </svg>
-              </div>
-            </div>
-          </div>
 
-          {/* Sale Products Section */}
-          <div className="mt-5">
-            <h4 className="text-lg font-bold mb-4">Sale Products</h4>
-            {[
-              {
-                name: "Red Capsicum",
-                price: "₹1,697",
-                oldPrice: "₹2,715",
-                image: "/shop-filter/sale1.png", // Replace with the actual image URL
-                rating: 4,
-              },
-              {
-                name: "Chanise Cabbage",
-                price: "₹1,781",
-                oldPrice: "₹2,036",
-                image: "/shop-filter/sale2.png", // Replace with the actual image URL
-                rating: 4,
-              },
-              {
-                name: "Green Capsicum",
-                price: "₹1,697",
-                oldPrice: "₹2,799",
-                image: "/shop-filter/sale3.png", // Replace with the actual image URL
-                rating: 3,
-              },
-            ].map((product, index) => (
-              <div
-                key={index}
-                className={`flex items-center gap-4 p-4 bg-white border-2 rounded-lg mb-4 hover:border-[#3BB77E] ${
-                  saleProductSelected &&
-                  product.name == saleProductSelected.name
-                    ? "border-[#3BB77E]"
-                    : ""
-                }`}
-                onClick={() => {
-                  setsaleProductSelected(product);
-                }}
-              >
-                {/* Product Image */}
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="h-16 w-16 object-cover rounded-md"
-                />
-
-                {/* Product Details */}
-                <div className="flex-grow">
-                  <h5 className="font-semibold text-gray-700">
-                    {product.name}
-                  </h5>
-                  <p className="text-sm text-gray-500">
-                    <span className="text-green-600 font-bold">
-                      {product.price}
-                    </span>{" "}
-                    <s className="text-gray-400">{product.oldPrice}</s>
-                  </p>
-
-                  {/* Rating Stars */}
-                  <div className="flex items-center mt-2">
-                    {Array.from({ length: 5 }).map((_, starIndex) => (
-                      <svg
-                        key={starIndex}
-                        xmlns="http://www.w3.org/2000/svg"
-                        className={`h-4 w-4 ${
-                          starIndex < product.rating
-                            ? "text-yellow-400"
-                            : "text-gray-300"
-                        }`}
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
+                  {/* Bottom Content */}
+                  <div className="mt-2">
+                    <h3 className="text-[#4D4D4D] font-[500] text-[12px] truncate group-hover:text-[#2C742F]">
+                      {product.name}
+                    </h3>
+                    <div className="flex justify-between items-center mt-1">
+                      <div>
+                        <span className="text-black font-[600] text-[12px]">
+                          ₹{product.price}
+                        </span>
+                        <div className="text-yellow-400 text-sm flex">
+                          {Array.from({ length: 5 }).map((_, starIndex) => (
+                            <img
+                              key={starIndex}
+                              src={
+                                starIndex < product.rating
+                                  ? "/shop-filter/yellow-star2.png"
+                                  : "/shop-filter/gray-star2.png"
+                              }
+                              alt="rating"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <button
+                        className="bg-green-100 group-hover:bg-[#3BB77E] group-hover:text-white text-green-700 px-4 py-2 rounded-md hover:bg-green-200 transition duration-500"
+                        onClick={() => navigate("/mycart")}
                       >
-                        <path d="M12 .587l3.668 7.425 8.174 1.196-5.914 5.757 1.396 8.134L12 18.563 4.676 23l1.396-8.134-5.914-5.757 8.174-1.196z" />
-                      </svg>
-                    ))}
+                        Add
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* Right Section */}
-        <div className="flex-grow bg-gray-50 p-6">
-          {/* Sort and Results */}
-          <div className="flex justify-between items-center mb-6">
-            <div className="flex items-center space-x-4">
-              <label htmlFor="sort" className="text-gray-600 font-medium">
-                Sort by:
-              </label>
-              <select
-                id="sort"
-                className="border border-gray-300 rounded-md p-2 text-sm text-gray-700"
-              >
-                <option value="latest">Latest</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-              </select>
+              ))}
             </div>
-            <div className="text-gray-600 font-medium">52 Results Found</div>
-          </div>
-
-          {/* Product Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className="border border-gray-200 rounded-md p-4 bg-white relative group"
-              >
-                {product.outOfStock && (
-                  <div className="absolute top-2 left-2 bg-black text-white text-xs px-2 py-1 rounded">
-                    Out of Stock
-                  </div>
-                )}
-                {product.sale && (
-                  <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
-                    Sale 50%
-                  </div>
-                )}
-                <img
-                  src={product.img}
-                  alt={product.name}
-                  className=" object-cover mb-4 cursor-pointer"
-                  onClick={() => {
-                    navigate("/product_quick");
-                  }}
-                />
-                <h3 className="text-gray-700 font-medium text-lg truncate">
-                  {product.name}
-                </h3>
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-green-500 font-semibold">
-                    ₹{product.price}
-                  </span>
-                  <button
-                    className="bg-green-100 text-green-700 px-4 py-2 rounded-md hover:bg-green-200"
-                    onClick={() => {
-                      navigate("/mycart");
-                    }}
-                  >
-                    Add
-                  </button>
-                </div>
-                <div className="text-yellow-400 text-sm mt-2">
-                  {"\u2605".repeat(Math.round(product.rating))}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
-      <div className="bg-white my-4 py-4 mt-4 px-14 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-        {/* Left Text Section */}
-        <div className="max-w-[500px]">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">
-            Subscribe to our Newsletter
-          </h3>
-          <p className="text-gray-500 text-sm">
-            Pellentesque eu nibh eget mauris congue mattis mattis nec tellus.
-            Phasellus imperdiet elit eu magna.
-          </p>
-        </div>
 
-        {/* Subscribe Form */}
-        <div className="flex items-center w-full md:w-2/5">
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="w-full p-3 text-sm border border-gray-300 rounded-l-lg focus:outline-none"
-          />
-          <button className="bg-green-500 text-white px-6 py-3 rounded-r-lg text-sm font-semibold hover:bg-green-600">
-            Subscribe
-          </button>
-        </div>
-
-        {/* Social Icons */}
-        <div className="flex space-x-4">
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaFacebookF />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaTwitter />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaPinterestP />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaInstagram />
-          </div>
-        </div>
-      </div>
+      <NewsLetter />
       <br></br>
     </div>
   );

@@ -41,8 +41,9 @@ const DailyBestSells = () => {
   return (
     <div className="w-full mx-auto p-6 bg-[#FFFFFF]">
       {/* Header Section */}
-      <div className="flex flex-col sm:flex-row justify-center items-center space-x-0 sm:space-x-20 text-center mb-6">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-0">
+      <div className="relative max-w-[1100px] mx-auto flex items-center md:flex-row justify-between items-center md:items-start mb-6 ">
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-0 ml-0">
+
           Daily Best Sells
         </h2>
 
@@ -55,22 +56,23 @@ const DailyBestSells = () => {
           <div className="flex items-center space-x-4">
             <Countdown date={expirationTime} renderer={renderer} />
           </div>
-          <div className="flex items-center space-x-4">
-            {/* Custom Previous Arrow */}
-            <div
-              onClick={() => sliderRef.current?.slickPrev()}
-              className="cursor-pointer"
-            >
-              <img src="/landing/Left.png" alt="Previous" className="w-6 h-6" />
-            </div>
+        </div>
+        <div className="flex items-center space-x-4 right-0">
+          {/* Custom Previous Arrow */}
+          <div
+            onClick={() => sliderRef.current?.slickPrev()}
+            className="cursor-pointer"
+          >
+            <img src="/landing/Left.png" alt="Previous" className="w-8 h-8" />
+          </div>
 
-            {/* Custom Next Arrow */}
-            <div
-              onClick={() => sliderRef.current?.slickNext()}
-              className="cursor-pointer"
-            >
-              <img src="/landing/right.png" alt="Next" className="w-6 h-6" />
-            </div>
+          {/* Custom Next Arrow */}
+          <div
+            onClick={() => sliderRef.current?.slickNext()}
+            className="cursor-pointer"
+          >
+            <img src="/landing/right.png" alt="Next" className="w-8 h-8" />
+
           </div>
         </div>
       </div>
@@ -85,8 +87,9 @@ const DailyBestSells = () => {
               category="Coffee & Teas"
               title="Coffee 1kg"
               rating={4}
-              price="₹20"
-              originalPrice="₹25"
+              price="$20"
+              originalPrice="$25"
+
               sold="20/50"
             />
             <ProductCard
@@ -94,8 +97,9 @@ const DailyBestSells = () => {
               category="Meat"
               title="Halal Sausage 350g"
               rating={4}
-              price="₹4"
-              originalPrice="₹10"
+              price="$4"
+              originalPrice="$10"
+
               sold="7/20"
             />
             <ProductCard
@@ -103,8 +107,9 @@ const DailyBestSells = () => {
               category="Coffee & Teas"
               title="Green Tea 250g"
               rating={4}
-              price="₹3"
-              originalPrice="₹7"
+              price="$3"
+              originalPrice="$7"
+
               sold="32/50"
             />
             <ProductCard
@@ -112,8 +117,9 @@ const DailyBestSells = () => {
               category="Vegetables"
               title="Onion 1kg"
               rating={4}
-              price="₹0.50"
-              originalPrice="₹2"
+              price="$0.50"
+              originalPrice="$2"
+
               sold="2/10"
             />
           </Slider>
@@ -121,28 +127,54 @@ const DailyBestSells = () => {
 
         {/* Sidebar Section */}
         <div className="w-full sm:w-1/4 bg-yellow-50 p-6 rounded-lg">
-          <h3 className="text-2xl font-bold mb-4">10% OFF</h3>
+          <h3 className="text-2xl text-[#253D4E] font-bold mb-4 text-center">
+            10% OFF
+          </h3>
+
           <p className="text-gray-600 mb-4">
             For new members, sign up at the first time
           </p>
           <form className="space-y-4">
-            <div>
+            <div className="relative w-full">
               <label className="text-sm font-medium">Email address</label>
-              <input
-                type="email"
-                placeholder="johndoe@gmail.com"
-                className="w-full p-2 border border-gray-300 rounded mt-1"
-              />
+
+              {/* Wrapper for Input Field and Icon */}
+              <div className="relative">
+                {/* Mail Icon */}
+                <img
+                  src="/landing/mail.png"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+                  alt="Mail Icon"
+                />
+
+                {/* Input Field */}
+                <input
+                  type="email"
+                  placeholder="johndoe@gmail.com"
+                  className="w-full p-2 pl-10 border border-gray-300 rounded mt-1"
+                />
+              </div>
             </div>
-            <div>
+
+            <div className="relative w-full">
               <label className="text-sm font-medium">Password</label>
-              <input
-                type="password"
-                placeholder="Maximum 8 characters"
-                className="w-full p-2 border border-gray-300 rounded mt-1"
-              />
+              {/* Wrapper for Input Field and Icon */}
+              <div className="relative">
+                {/* Mail Icon */}
+                <img
+                  src="/landing/key.png"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+                  alt="Mail Icon"
+                />
+
+                <input
+                  type="password"
+                  placeholder="Maximum 8 characters"
+                  className="w-full p-2 pl-10 border border-gray-300 rounded mt-1"
+                />
+              </div>
             </div>
-            <button className="w-full bg-green-500 text-white py-2 rounded mt-4 font-semibold">
+            <button className="w-full bg-[#3BB77E] text-white py-2 rounded mt-4 font-semibold">
               Register Now
             </button>
           </form>
@@ -162,40 +194,73 @@ const ProductCard = ({
   sold,
 }) => {
   const navigate = useNavigate();
+
   return (
-    <div className="border rounded-lg p-4 shadow-sm mx-2 cursor-pointer">
+    <div className="border rounded-lg p-4 shadow-md bg-white relative mx-2 cursor-pointer">
+      {/* Save Badge */}
+      <div className="absolute top-0 left-0 bg-[#FFD480] text-[#FFFFFF] text-xs font-semibold px-2 py-1 rounded-md">
+        Save 10%
+      </div>
+
+      {/* Product Image */}
       <img
         src={image}
         alt={title}
         className="w-full h-40 object-cover mb-4 rounded"
-        onClick={() => {
-          navigate(`/product_quick`);
-        }}
+        onClick={() => navigate(`/product_quick`)}
       />
-      <div className="text-sm text-gray-500">{category}</div>
-      <h4 className="font-semibold text-gray-800">{title}</h4>
+
+      {/* Category */}
+      <div className="text-xs text-gray-500 mb-1">{category}</div>
+
+      {/* Title */}
+      <h4 className="font-semibold text-gray-800 text-base mb-2">{title}</h4>
+
+      {/* Rating */}
       <div className="flex items-center space-x-1 mb-2">
         <Stars rating={rating} />
-        <span className="text-sm text-gray-500">({rating})</span>
+        <span className="text-xs text-gray-500">({rating})</span>
       </div>
+
+      {/* Price Section */}
       <div className="flex items-baseline space-x-2 mb-2">
-        <span className="text-lg font-bold text-green-600">{price}</span>
-        <span className="text-sm text-gray-400 line-through">
-          {originalPrice}
-        </span>
+        <span className="text-lg font-bold text-[#3BB77E]">{price}</span>
+        {originalPrice && (
+          <span className="text-sm text-gray-400 line-through">
+            {originalPrice}
+          </span>
+        )}
       </div>
-      <div className="text-sm text-gray-500 mb-2">Sold: {sold}</div>
+
+      {/* Sold Information */}
+      <div className="text-sm text-gray-500 mb-4">
+        Sold: <span className="font-semibold">{sold}</span>
+      </div>
+
+      {/* Progress Bar */}
+      <div className="w-full bg-gray-200 rounded-full h-1 mb-4">
+        <div
+          className="bg-[#3BB77E] h-1 rounded-full"
+          style={{
+            width: `${(parseInt(sold.split("/")[0]) /
+              parseInt(sold.split("/")[1])) *
+              100}%`,
+          }}
+        ></div>
+      </div>
+
+      {/* Add to Cart Button */}
       <button
-        className="w-full bg-green-500 text-white py-2 rounded font-semibold"
-        onClick={() => {
-          navigate(`/mycart`);
-        }}
+        className="w-full bg-[#3BB77E] text-white py-2 rounded font-semibold flex items-center justify-center space-x-2 hover:bg-[#2a9f65] transition"
+        onClick={() => navigate(`/mycart`)}
       >
-        Add to cart
+        <img src="/landing/add2.png" className="w-4 h-4" alt="Add to cart" />
+        <span>Add to cart</span>
       </button>
     </div>
   );
 };
+
 
 const Stars = ({ rating }) => (
   <div className="flex">

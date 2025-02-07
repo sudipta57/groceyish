@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  FaChevronRight,
   FaFacebookF,
   FaInstagram,
   FaPinterestP,
@@ -9,6 +10,7 @@ import {
 import { HiHome } from "react-icons/hi";
 import Loading from "../component/Loading";
 import { useNavigate } from "react-router-dom";
+import NewsLetter from "../component/NewsLetter";
 const products = [
   {
     id: 1,
@@ -66,70 +68,86 @@ export default function MyCart() {
       <br></br>
       <div className="text-[#ADADAD] bg-[url('/shop-filter/bg-banner.png')] bg-cover min-h-[120px] items-center flex ps-10 md:ps-32 mb-6">
         <div className="flex items-center">
-          <HiHome />
-          <p className="text-[#3BB77E] ml-2">/ My Cart</p>
+          <img src="/home-icon.png" alt="img" className="me-3" />
+          <FaChevronRight />
+          <p className="text-[#3BB77E] ml-2"> My Cart</p>
         </div>
       </div>
       <div className="mx-auto p-8 bg-white">
         <h1 className="text-center text-2xl font-bold mb-6">My Cart</h1>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
           {/* Left Section: Product List */}
           <div className="lg:col-span-2">
-            <table className="w-full border-collapse border border-gray-200">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left p-4">PRODUCT</th>
-                  <th className="text-left p-4">PRICE</th>
-                  <th className="text-left p-4">QUANTITY</th>
-                  <th className="text-left p-4">SUBTOTAL</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.map((product) => (
-                  <CartRow
-                    key={product.id}
-                    product={product}
-                    onRemove={handleRemove}
-                  />
-                ))}
-                {/* Buttons Row */}
-                <tr>
-                  <td colSpan="5" className="p-4">
-                    <div className="flex justify-between">
-                      <button
-                        className="bg-gray-200 px-4 py-2 rounded-3xl"
-                        onClick={() => {
-                          navigate("/shop-filter");
-                        }}
-                      >
-                        Return to shop
-                      </button>
-                      <button className="bg-gray-200 px-4 py-2 rounded-3xl">
-                        Update Cart
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="overflow-x-auto border-collapse border rounded-md">
+              <table className="w-full border-gray-200">
+                <thead>
+                  <tr className="border-b">
+                    <th className="text-left p-4 text-[#808080] text-[14px] font-[600]">
+                      PRODUCT
+                    </th>
+                    <th className="text-left p-4 text-[#808080] text-[14px] font-[600]">
+                      PRICE
+                    </th>
+                    <th className="text-left p-4 text-[#808080] text-[14px] font-[600]">
+                      QUANTITY
+                    </th>
+                    <th className="text-left p-4 text-[#808080] text-[14px] font-[600]">
+                      SUBTOTAL
+                    </th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.map((product) => (
+                    <CartRow
+                      key={product.id}
+                      product={product}
+                      onRemove={handleRemove}
+                    />
+                  ))}
+                  {/* Buttons Row */}
+                  <tr>
+                    <td colSpan="5" className="p-4">
+                      <div className="flex justify-between">
+                        <button
+                          className="bg-[#F2F2F2] px-4 py-2 rounded-3xl text-[#4D4D4D] text-[14px] font-[700]"
+                          onClick={() => {
+                            navigate("/shop-filter");
+                          }}
+                        >
+                          Return to shop
+                        </button>
+                        <button className="bg-[#F2F2F2] px-4 py-2 rounded-3xl text-[#4D4D4D] text-[14px] font-[700]">
+                          Update Cart
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-            <div className="mt-6">
-              <label className="flex gap-4">
-                <input
-                  type="text"
-                  placeholder="Enter code"
-                  className="border p-2 rounded-3xl flex-grow"
-                />
-                <button className="bg-black text-white px-6 py-2 rounded-3xl">
-                  Apply Coupon
-                </button>
+            <div className="mt-6 border rounded-md px-2 py-4">
+              <label className="flex justify-between items-center gap-4">
+                <h2 className="text-[20px] font-[600] text-[#1A1A1A]">
+                  Coupon Code
+                </h2>
+                <div className="flex flex-grow border rounded-full overflow-hidden">
+                  <input
+                    type="text"
+                    placeholder="Enter code"
+                    className="p-2 flex-grow outline-none"
+                  />
+                  <button className="bg-black rounded-full text-white px-6 py-2">
+                    Apply Coupon
+                  </button>
+                </div>
               </label>
             </div>
           </div>
 
           {/* Right Section: Cart Total */}
-          <div className="p-4 border rounded-md shadow-md">
+          <div className="p-4 border border-collapse rounded-md self-start">
             <h2 className="text-xl font-bold mb-4">Cart Total</h2>
             <div className="flex justify-between border-b pb-2 mb-2">
               <span>Subtotal:</span>
@@ -144,9 +162,9 @@ export default function MyCart() {
               <span>₹840.00</span>
             </div>
             <button
-              className="bg-green-500 text-white w-full py-2 mt-4 rounded-3xl"
+              className="bg-[#3BB77E] font-bold text-white w-full py-2 mt-4 rounded-3xl"
               onClick={() => {
-                navigate("/checkout");
+                navigate("/my-checkout");
               }}
             >
               Proceed to checkout
@@ -154,46 +172,7 @@ export default function MyCart() {
           </div>
         </div>
       </div>
-      <div className="bg-[#F7F7F7] mt-4 py-4 px-14 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-        {/* Left Text Section */}
-        <div className="max-w-[500px]">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">
-            Subscribe to our Newsletter
-          </h3>
-          <p className="text-gray-500 text-sm">
-            Pellentesque eu nibh eget mauris congue mattis mattis nec tellus.
-            Phasellus imperdiet elit eu magna.
-          </p>
-        </div>
-
-        {/* Subscribe Form */}
-        <div className="flex items-center w-full md:w-2/5">
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="w-full p-3 text-sm border border-gray-300 rounded-l-lg focus:outline-none"
-          />
-          <button className="bg-green-500 text-white px-6 py-3 rounded-r-lg text-sm font-semibold hover:bg-green-600">
-            Subscribe
-          </button>
-        </div>
-
-        {/* Social Icons */}
-        <div className="flex space-x-4">
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaFacebookF />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaTwitter />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaPinterestP />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaInstagram />
-          </div>
-        </div>
-      </div>
+      <NewsLetter />
       <br></br>
     </div>
   );
@@ -227,24 +206,27 @@ const CartRow = ({ product, onRemove }) => {
         {`₹${product.price}`}
       </td>
       <td className="p-4">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between gap-2 border rounded-full w-[60%] px-2 py-1">
           <button
-            className="border px-2 py-1"
+            className="border rounded-full px-2  bg-[#F2F2F2]"
             onClick={decreaseQuantity}
             disabled={quantity <= 1}
           >
             -
           </button>
           <span>{quantity}</span>
-          <button className="border px-2 py-1" onClick={increaseQuantity}>
+          <button
+            className="border rounded-full px-2 bg-[#F2F2F2]"
+            onClick={increaseQuantity}
+          >
             +
           </button>
         </div>
       </td>
-      <td className="p-4">{`₹${quantity * product.price}`}</td>
-      <td className="p-4 text-right">
-        <button className="text-red-500" onClick={() => onRemove(product.id)}>
-          ×
+      <td className="p-4 font-bold">{`₹${quantity * product.price}`}</td>
+      <td className=" text-center">
+        <button className="text-gray-400 hover:text-red-600 border rounded-full px-2">
+          &times;
         </button>
       </td>
     </tr>

@@ -1,5 +1,5 @@
-import { FaHeart, FaShoppingCart, FaSearch } from "react-icons/fa";
 import React, { useState } from "react";
+import { FaHeart, FaSearch, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import {
@@ -9,33 +9,27 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 
-import {
-  FaHome,
-  FaFire,
-  FaPercentage,
-  FaBullhorn,
-  FaPhone,
-  FaThLarge,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
+import { FaBars, FaPhone, FaThLarge, FaTimes } from "react-icons/fa";
 const TopBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const handleLinkClick = () => {
     setMenuOpen(false);
   };
+  const restrictedRoutes = ["/log", "/reg", "/*"];
+
   return (
     <>
       {/* Navigation Bar and Header Section */}
-      <nav className=" fixed font-quicksand top-0 right-0 left-0 z-10 bg-white shadow-md py-4 px-6 border-b border-gray-300 mb-4">
+      <nav className=" fixed font-quicksand top-0 right-0 left-0 z-20 bg-white shadow-md py-4 px-6 border-b border-gray-300 mb-4">
         <div className="flex items-center justify-between">
           {/* Left Side - Logo */}
-          <div>
-            <img src="/landing/company-logo.png" alt="Logo" className="h-8" />
+          <div className="right-0">
+            <img src="/landing/company-logo.png" alt="Logo" className="h-10" />
           </div>
 
           {/* Center - Search Bar */}
-          <div className="hidden lg:flex items-center bg-gray-100 rounded-xl w-full max-w-lg px-4 py-2 mx-6">
+
+          <div className="hidden lg:flex items-center rounded-lg bg-[#F3F3F3]  w-full max-w-lg  h-9 ">
             <select className="bg-transparent text-gray-600 text-sm outline-none">
               <option>All Categories</option>
               <option>Fruits</option>
@@ -46,17 +40,18 @@ const TopBar = () => {
             <input
               type="text"
               placeholder="Search for items..."
-              className="flex-1 bg-transparent text-gray-700 outline-none placeholder-gray-400"
+              className="flex-1 bg-[#F3F3F3] outline-none placeholder-gray-400"
             />
-            <button className="bg-green-500 rounded-full p-2 ml-2 text-white">
-              <FaSearch />
+
+            <button className="bg-[#3BB77E] text-white p-2  flex right-[-10px]">
+              <FaSearch size={21} />
             </button>
           </div>
 
           {/* Right Side - Icons */}
           <div className="hidden lg:flex items-center gap-6">
             <Link
-              to="/wishlist"
+              to="/my-wishlist"
               className="relative flex items-center text-gray-700"
             >
               <FaHeart className="text-xl" />
@@ -66,7 +61,7 @@ const TopBar = () => {
               <span className="ml-2">Wishlist</span>
             </Link>
             <Link
-              to="/mycart"
+              to="/my-cart"
               className="relative flex items-center text-gray-700"
             >
               <FaShoppingCart className="text-xl" />
@@ -77,14 +72,16 @@ const TopBar = () => {
                 My cart <span className="text-green-500">$21</span>
               </span>
             </Link>
-            <header>
-              <SignedOut>
-                <SignInButton />
-              </SignedOut>
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </header>
+            {!restrictedRoutes.includes(location.pathname) && (
+              <header>
+                <SignedOut>
+                  <SignInButton />
+                </SignedOut>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </header>
+            )}
           </div>
 
           {/* Hamburger Menu for Small Screens */}
@@ -97,9 +94,10 @@ const TopBar = () => {
         </div>
 
         {/* Header Links (Merged Section for Large Screens) */}
+
         <div className="hidden lg:flex items-center border-t border-gray-300 justify-between mt-4">
-          <Link to="/demo">
-            <button className="flex items-center text-white mt-2 bg-green-500 px-4 py-2 rounded">
+          <Link to="/demo-us">
+            <button className="flex items-center text-white mt-2 bg-[#3BB77E] px-4 py-2 rounded">
               <FaThLarge className="mr-2" /> Browse All Categories
             </button>
           </Link>
@@ -111,10 +109,10 @@ const TopBar = () => {
             <Link to="/shop-filter" className="flex items-center text-gray-700">
               Shop
             </Link>
-            <Link to="/about" className="flex items-center text-gray-700">
+            <Link to="/about-us" className="flex items-center text-gray-700">
               About Us
             </Link>
-            <Link to="/contact" className="flex items-center text-gray-700">
+            <Link to="/contact-us" className="flex items-center text-gray-700">
               Contact Us
             </Link>
           </div>
@@ -128,7 +126,7 @@ const TopBar = () => {
         {menuOpen && (
           <div className="bg-white shadow-md py-4 px-1 z-30 border-b border-gray-300 lg:hidden fixed top-12 left-0 right-0 transition-all duration-300 ease-in-out transform">
             {/* Search Bar */}
-            <div className="flex bg-gray-100 rounded-xl p-2 max-w-[400px] ">
+            <div className="flex bg-gray-100 rounded-xl p-2 max-w-[400px]">
               <select className="bg-transparent text-gray-600 text-sm outline-none">
                 <option>All Categories</option>
                 <option>Fruits</option>
@@ -167,21 +165,21 @@ const TopBar = () => {
                 Shop
               </Link>
               <Link
-                to="/about"
+                to="/about-us"
                 className="flex items-center text-gray-700"
                 onClick={handleLinkClick}
               >
                 About Us
               </Link>
               <Link
-                to="/contact"
+                to="/contact-us"
                 className="flex items-center text-gray-700"
                 onClick={handleLinkClick}
               >
                 Contact Us
               </Link>
               <Link
-                to="/wishlist"
+                to="/my-wishlist"
                 className="relative flex items-center text-gray-700"
                 onClick={handleLinkClick}
               >
@@ -192,7 +190,7 @@ const TopBar = () => {
                 <span className="ml-2">Wishlist</span>
               </Link>
               <Link
-                to="/mycart"
+                to="/my-cart"
                 className="relative flex items-center text-gray-700"
                 onClick={handleLinkClick}
               >

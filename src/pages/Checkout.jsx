@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 
 import { HiHome } from "react-icons/hi";
+import NewsLetter from "../component/NewsLetter";
 
 export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState("Cash on Delivery");
@@ -27,52 +28,56 @@ export default function Checkout() {
         </div>
       </div>
       <div className="bg-white my-6 ">
-        <div className="flex flex-col lg:flex-row gap-8 p-4 ">
+        <div className="flex flex-col lg:flex-row gap-8 p-4 container mx-auto ">
           {/* Billing Information */}
-          <div className="flex-1 bg-white p-6 rounded-md shadow-md">
+          <div className="flex-1 bg-white p-6 rounded-md">
             <h2 className="text-xl font-semibold mb-4">Billing Information</h2>
             <form className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <div>
-                <label
-                  htmlFor="first-name"
-                  className="block text-sm font-medium mb-1"
-                >
-                  First name
-                </label>
-                <input
-                  id="first-name"
-                  type="text"
-                  placeholder="Your first name"
-                  className="border p-2 rounded-md w-full"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="last-name"
-                  className="block text-sm font-medium mb-1"
-                >
-                  Last name
-                </label>
-                <input
-                  id="last-name"
-                  type="text"
-                  placeholder="Your last name"
-                  className="border p-2 rounded-md w-full"
-                />
-              </div>
               <div className="lg:col-span-2">
-                <label
-                  htmlFor="company-name"
-                  className="block text-sm font-medium mb-1"
-                >
-                  Company Name (optional)
-                </label>
-                <input
-                  id="company-name"
-                  type="text"
-                  placeholder="Company name (optional)"
-                  className="border p-2 rounded-md w-full"
-                />
+                <div className="grid grid-cols-1 md:grid-cols-3 space-x-2">
+                  <div>
+                    <label
+                      htmlFor="first-name"
+                      className="block text-sm font-medium mb-1"
+                    >
+                      First name
+                    </label>
+                    <input
+                      id="first-name"
+                      type="text"
+                      placeholder="Your first name"
+                      className="border p-2 rounded-md w-full"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="last-name"
+                      className="block text-sm font-medium mb-1"
+                    >
+                      Last name
+                    </label>
+                    <input
+                      id="last-name"
+                      type="text"
+                      placeholder="Your last name"
+                      className="border p-2 rounded-md w-full"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="company-name"
+                      className="block text-sm font-medium mb-1"
+                    >
+                      Company Name (optional)
+                    </label>
+                    <input
+                      id="company-name"
+                      type="text"
+                      placeholder="Company name (optional)"
+                      className="border p-2 rounded-md w-full"
+                    />
+                  </div>
+                </div>
               </div>
               <div className="lg:col-span-2">
                 <label
@@ -138,7 +143,7 @@ export default function Checkout() {
                   className="border p-2 rounded-md w-full"
                 />
               </div>
-              <div className="lg:col-span-2">
+              <div className="lg:col-span-2 border-b pb-4">
                 <label className="flex items-center gap-2">
                   <input type="checkbox" id="different-address" />
                   <span>Ship to a different address</span>
@@ -146,7 +151,10 @@ export default function Checkout() {
               </div>
             </form>
 
-            <h3 className="text-lg font-semibold mt-6">Additional Info</h3>
+            <h3 className="text-lg font-semibold my-6">Additional Info</h3>
+            <label htmlFor="email" className="block text-sm font-medium mb-1">
+              Order Notes (Optional)
+            </label>
             <textarea
               placeholder="Notes about your order, e.g. special notes for delivery"
               className="border p-2 rounded-md w-full mt-2"
@@ -155,7 +163,7 @@ export default function Checkout() {
           </div>
 
           {/* Order Summary */}
-          <div className="w-full lg:w-1/3 bg-white p-6 rounded-md shadow-md">
+          <div className="w-full lg:w-1/3 bg-white p-6 rounded-md border self-start">
             <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
             <div className="space-y-4">
               {/* Order Items */}
@@ -189,12 +197,12 @@ export default function Checkout() {
               </div>
 
               {/* Subtotal, Shipping, Total */}
-              <div className="border-t pt-4">
-                <div className="flex justify-between">
+              <div className=" pt-4">
+                <div className="flex justify-between border-b mb-2 pb-2">
                   <p className="text-gray-500">Subtotal:</p>
                   <p className="font-semibold">₹1,327.00</p>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between border-b mb-2 pb-2">
                   <p className="text-gray-500">Shipping:</p>
                   <p className="font-semibold">Free</p>
                 </div>
@@ -211,7 +219,7 @@ export default function Checkout() {
               {["Cash on Delivery", "Paypal", "Amazon Pay"].map((method) => (
                 <label
                   key={method}
-                  className="flex items-center gap-2 cursor-pointer"
+                  className={`flex items-center gap-2 cursor-pointer text-gray-700`}
                 >
                   <input
                     type="radio"
@@ -219,59 +227,20 @@ export default function Checkout() {
                     value={method}
                     checked={paymentMethod === method}
                     onChange={handlePaymentChange}
-                    className="form-radio text-green-500"
+                    className="form-radio accent-green-500"
                   />
                   {method}
                 </label>
               ))}
             </form>
 
-            <button className="w-full bg-green-500 text-white p-2 rounded-md mt-4 hover:bg-green-600">
+            <button className="w-full bg-[#3BB77E] text-white p-2 rounded-full mt-4 ">
               Place Order
             </button>
           </div>
         </div>
       </div>
-      <div className="bg-white  py-4 px-14 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-        {/* Left Text Section */}
-        <div className="max-w-[500px]">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">
-            Subscribe to our Newsletter
-          </h3>
-          <p className="text-gray-500 text-sm">
-            Pellentesque eu nibh eget mauris congue mattis mattis nec tellus.
-            Phasellus imperdiet elit eu magna.
-          </p>
-        </div>
-
-        {/* Subscribe Form */}
-        <div className="flex items-center w-full md:w-2/5">
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="w-full p-3 text-sm border border-gray-300 rounded-l-lg focus:outline-none"
-          />
-          <button className="bg-green-500 text-white px-6 py-3 rounded-r-lg text-sm font-semibold hover:bg-green-600">
-            Subscribe
-          </button>
-        </div>
-
-        {/* Social Icons */}
-        <div className="flex space-x-4">
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaFacebookF />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaTwitter />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaPinterestP />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaInstagram />
-          </div>
-        </div>
-      </div>
+      <NewsLetter />
       <br></br>
     </div>
   );

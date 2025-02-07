@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  FaChevronRight,
   FaFacebookF,
   FaInstagram,
   FaPinterestP,
@@ -7,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { HiHome } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import NewsLetter from "./NewsLetter";
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -15,9 +17,12 @@ export default function Login() {
       <br></br>
       <div className="mt-16 md:mt-36 text-[#ADADAD] bg-[url('/shop-filter/bg-banner.png')] bg-cover  min-h-[120px] items-center flex ps-10 md:ps-32 mb-6 ">
         <div className="flex items-center">
-          <HiHome />
-          <p>Account</p>
-          <p className="text-[#3BB77E]">/ Login</p>
+          <img src="/home-icon.png" alt="img" className="me-3" />
+          <FaChevronRight />
+          <p className="mx-3">Account </p>
+          <FaChevronRight />
+
+          <p className="text-[#3BB77E] ml-2">Login</p>
         </div>
       </div>
       <div className="p-6 flex items-center justify-center bg-gray-100">
@@ -68,7 +73,7 @@ export default function Login() {
               />
               <span className="ml-2">Remember me</span>
             </label>
-            <a href="#" className="text-sm text-green-500 hover:underline">
+            <a href="#" className="text-sm text-[#808080] hover:underline">
               Forgot Password
             </a>
           </div>
@@ -76,7 +81,7 @@ export default function Login() {
           {/* Login Button */}
           <button
             type="submit"
-            className="w-full bg-green-500 text-white rounded-lg py-2 font-medium hover:bg-green-600 transition duration-200"
+            className="w-full bg-[#3BB77E] text-white rounded-full py-2 font-medium"
           >
             Login
           </button>
@@ -84,55 +89,13 @@ export default function Login() {
           {/* Register Link */}
           <p className="text-center text-sm text-gray-600 mt-4">
             Don’t have an account?{" "}
-            <Link
-              to="/reg"
-              className="text-green-500 font-medium hover:underline"
-            >
+            <Link to="/reg" className="font-bold hover:underline">
               Register
             </Link>
           </p>
         </div>
       </div>
-      <div className="bg-[#F7F7F7] mt-4 py-4 px-14 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-        {/* Left Text Section */}
-        <div className="max-w-[500px]">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">
-            Subscribe to our Newsletter
-          </h3>
-          <p className="text-gray-500 text-sm">
-            Pellentesque eu nibh eget mauris congue mattis mattis nec tellus.
-            Phasellus imperdiet elit eu magna.
-          </p>
-        </div>
-
-        {/* Subscribe Form */}
-        <div className="flex items-center w-full md:w-2/5">
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="w-full p-3 text-sm border border-gray-300 rounded-l-lg focus:outline-none"
-          />
-          <button className="bg-green-500 text-white px-6 py-3 rounded-r-lg text-sm font-semibold hover:bg-green-600">
-            Subscribe
-          </button>
-        </div>
-
-        {/* Social Icons */}
-        <div className="flex space-x-4">
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaFacebookF />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaTwitter />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaPinterestP />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaInstagram />
-          </div>
-        </div>
-      </div>
+      <NewsLetter />
       <br></br>
     </div>
   );

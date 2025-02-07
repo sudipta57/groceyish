@@ -1,11 +1,13 @@
 import React from "react";
 import {
+  FaChevronRight,
   FaFacebookF,
   FaInstagram,
   FaPinterestP,
   FaTwitter,
 } from "react-icons/fa";
 import { HiHome } from "react-icons/hi";
+import NewsLetter from "./NewsLetter";
 
 export default function PageNotFound() {
   return (
@@ -13,8 +15,9 @@ export default function PageNotFound() {
       <br></br>
       <div className="mt-16 md:mt-36 text-[#ADADAD] bg-[url('/shop-filter/bg-banner.png')] bg-cover  min-h-[120px] items-center flex ps-10 md:ps-32 mb-6 ">
         <div className="flex items-center">
-          <HiHome />
-          <p className="text-[#3BB77E]">/ 404 Error Page</p>
+          <img src="/home-icon.png" alt="img" className="me-3" />
+          <FaChevronRight />
+          <p className="text-[#3BB77E] ml-2">Not found</p>
         </div>
       </div>
 
@@ -39,52 +42,13 @@ export default function PageNotFound() {
 
           <a
             href="/"
-            className="bg-green-500 text-white px-6 py-3 rounded-full shadow hover:bg-green-600 transition"
+            className="bg-[#3BB77E] text-white px-6 py-3 rounded-full shadow "
           >
             Back to Home
           </a>
         </div>
       </div>
-      <div className="bg-[#F7F7F7] py-4 px-14 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-        {/* Left Text Section */}
-        <div className="max-w-[500px]">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">
-            Subscribe to our Newsletter
-          </h3>
-          <p className="text-gray-500 text-sm">
-            Pellentesque eu nibh eget mauris congue mattis mattis nec tellus.
-            Phasellus imperdiet elit eu magna.
-          </p>
-        </div>
-
-        {/* Subscribe Form */}
-        <div className="flex items-center w-full md:w-2/5">
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="w-full p-3 text-sm border border-gray-300 rounded-l-lg focus:outline-none"
-          />
-          <button className="bg-green-500 text-white px-6 py-3 rounded-r-lg text-sm font-semibold hover:bg-green-600">
-            Subscribe
-          </button>
-        </div>
-
-        {/* Social Icons */}
-        <div className="flex space-x-4">
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaFacebookF />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaTwitter />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaPinterestP />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaInstagram />
-          </div>
-        </div>
-      </div>
+      <NewsLetter />
       <br></br>
     </div>
   );

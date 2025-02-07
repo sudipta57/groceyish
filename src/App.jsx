@@ -34,10 +34,10 @@ const App = () => {
           <Route path="/log" element={<Login />} />
           <Route path="/user_dash" element={<UserDashboard />} />
           <Route path="/product_quick" element={<ProductQuick />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about-us" element={<About />} />
           <Route path="/shop-filter" element={<ShopFilter />} />
           <Route path="/" element={<Home />} />
-          <Route path="/demo" element={<Demo />} />
+          <Route path="/demo-us" element={<Demo />} />
           <Route
             path="/product-details/:categoryId"
             element={<ProductDetails />}
@@ -46,10 +46,10 @@ const App = () => {
             path="/feture-details/:categoryId"
             element={<FetureDetails />}
           />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/mycart" element={<MyCart />} />
+          <Route path="/my-checkout" element={<Checkout />} />
+          <Route path="/contact-us" element={<Contact />} />
+          <Route path="/my-wishlist" element={<Wishlist />} />
+          <Route path="/my-cart" element={<MyCart />} />
         </Routes>
         <Footer />
       </LoadingWrapper>

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
+  FaChevronRight,
   FaFacebookF,
   FaInstagram,
   FaPinterestP,
@@ -7,8 +8,8 @@ import {
 } from "react-icons/fa";
 
 import { HiHome } from "react-icons/hi";
-import Loading from "../component/Loading";
 import { useNavigate } from "react-router-dom";
+import NewsLetter from "../component/NewsLetter";
 const products = [
   {
     id: 1,
@@ -45,135 +46,103 @@ export default function Wishlist() {
       <br></br>
       <div className=" text-[#ADADAD] bg-[url('/shop-filter/bg-banner.png')] bg-cover min-h-[120px] items-center flex ps-10 md:ps-32 mb-6 ">
         <div className="flex items-center">
-          <HiHome />
-          <p className="text-[#3BB77E] ml-2">/ Wishlist</p>
+          <img src="/home-icon.png" alt="img" className="me-3" />
+          <FaChevronRight />
+          <p className="text-[#3BB77E] ml-2"> Wishlist</p>
         </div>
       </div>
-      <div className="mx-auto p-4 bg-white">
-        <h1 className="text-2xl font-bold text-center mb-6">My Wishlist</h1>
-        <div className="shadow-md rounded-lg">
-          <table className="w-full table-auto">
-            <thead>
-              <tr className="border-b">
-                <th className="p-4 text-left">PRODUCT</th>
-                <th className="p-4">PRICE</th>
-                <th className="p-4">STOCK STATUS</th>
-                <th className="p-4"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product) => (
-                <tr key={product.id} className="border-b">
-                  <td className="p-4 flex items-center space-x-4">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-16 h-16 object-cover rounded"
-                    />
-                    <span>{product.name}</span>
-                  </td>
-                  <td className="p-4 text-center">
-                    <span className="text-lg font-semibold">
-                      ₹{product.price}
-                    </span>
-                    <span className="text-gray-400 line-through ml-2">
-                      ₹{product.originalPrice}
-                    </span>
-                  </td>
-                  <td className="p-4 text-center">
-                    <span
-                      className={`px-2 py-1 rounded-lg text-sm font-medium ${
-                        product.stock === "In Stock"
-                          ? "bg-green-100 text-green-600"
-                          : "bg-red-100 text-red-600"
-                      }`}
-                    >
-                      {product.stock}
-                    </span>
-                  </td>
-                  <td className="p-4 text-center">
-                    <button
-                      className={`px-4 py-2 rounded-lg font-semibold text-sm ${
-                        product.stock === "In Stock"
-                          ? "bg-green-500 text-white hover:bg-green-600"
-                          : "bg-gray-200 text-gray-500 cursor-not-allowed"
-                      }`}
-                      disabled={product.stock !== "In Stock"}
-                      onClick={() => {
-                        navigate("/mycart");
-                      }}
-                    >
-                      Add to Cart
-                    </button>
-                  </td>
-                  <td className="p-4 text-center">
-                    <button className="text-gray-400 hover:text-red-600">
-                      &times;
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="p-4 flex justify-start items-center space-x-4">
-            <span className="font-semibold">Share:</span>
-            <div className="flex space-x-4">
-              <div className="p-2 bg-green-100 rounded-full text-green-600">
-                <FaFacebookF />
-              </div>
-              <div className="p-2 bg-green-100 rounded-full text-green-600">
-                <FaTwitter />
-              </div>
-              <div className="p-2 bg-green-100 rounded-full text-green-600">
-                <FaPinterestP />
-              </div>
-              <div className="p-2 bg-green-100 rounded-full text-green-600">
-                <FaInstagram />
+      <div className="p-4 bg-white">
+        <div className="container mx-auto">
+          <h1 className="text-[32px] font-[700] text-center mb-6">
+            My Wishlist
+          </h1>
+          <div className="rounded-lg border">
+            <div className="overflow-x-auto">
+              <table className="w-full table-auto">
+                <thead>
+                  <tr className="border-b text-[#808080] text-[14px] font-[600]">
+                    <th className="p-4 text-left">PRODUCT</th>
+                    <th className="p-4">PRICE</th>
+                    <th className="p-4">STOCK STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.map((product) => (
+                    <tr key={product.id} className="border-b">
+                      <td className="p-4 flex items-center space-x-4">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-16 h-16 object-cover rounded"
+                        />
+                        <span>{product.name}</span>
+                      </td>
+                      <td className="p-4 text-center ">
+                        <span className="text-lg font-semibold">
+                          ₹{product.price}
+                        </span>
+                        <span className="text-gray-400 line-through ml-2">
+                          ₹{product.originalPrice}
+                        </span>
+                      </td>
+                      <td className="p-4 text-center">
+                        <span
+                          className={`px-2 py-1 rounded-md text-sm font-medium ${
+                            product.stock === "In Stock"
+                              ? "bg-[#20B52633] text-[#2C742F]"
+                              : "bg-[#EA4B4833] text-[#EA4B48]"
+                          }`}
+                        >
+                          {product.stock}
+                        </span>
+                      </td>
+                      <td className="p-4 text-center">
+                        <button
+                          className={`px-4 py-2 rounded-full font-semibold text-sm ${
+                            product.stock === "In Stock"
+                              ? "bg-[#3BB77E] text-white"
+                              : "bg-gray-200 text-gray-500 cursor-not-allowed"
+                          }`}
+                          disabled={product.stock !== "In Stock"}
+                          onClick={() => {
+                            navigate("/mycart");
+                          }}
+                        >
+                          Add to Cart
+                        </button>
+                      </td>
+                      <td className=" text-center">
+                        <button className="text-[#B3B3B3] hover:text-red-600 border rounded-full px-2">
+                          &times;
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="p-4 flex justify-start items-center space-x-4">
+              <span className="font-semibold">Share:</span>
+              <div className="flex space-x-4">
+                <div className="p-2 hover:bg-[#3BB77E] transition-all rounded-full cursor-pointer hover:text-white ">
+                  <FaFacebookF />
+                </div>
+                <div className="p-2 hover:bg-[#3BB77E] transition-all rounded-full cursor-pointer hover:text-white ">
+                  <FaTwitter />
+                </div>
+                <div className="p-2 hover:bg-[#3BB77E] transition-all rounded-full cursor-pointer hover:text-white ">
+                  <FaPinterestP />
+                </div>
+                <div className="p-2 hover:bg-[#3BB77E] transition-all rounded-full cursor-pointer hover:text-white ">
+                  <FaInstagram />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="bg-[#F7F7F7] mt-4 py-4 px-14 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-        {/* Left Text Section */}
-        <div className="max-w-[500px]">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">
-            Subscribe to our Newsletter
-          </h3>
-          <p className="text-gray-500 text-sm">
-            Pellentesque eu nibh eget mauris congue mattis mattis nec tellus.
-            Phasellus imperdiet elit eu magna.
-          </p>
-        </div>
-
-        {/* Subscribe Form */}
-        <div className="flex items-center w-full md:w-2/5">
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="w-full p-3 text-sm border border-gray-300 rounded-l-lg focus:outline-none"
-          />
-          <button className="bg-green-500 text-white px-6 py-3 rounded-r-lg text-sm font-semibold hover:bg-green-600">
-            Subscribe
-          </button>
-        </div>
-
-        {/* Social Icons */}
-        <div className="flex space-x-4">
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaFacebookF />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaTwitter />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaPinterestP />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaInstagram />
-          </div>
-        </div>
-      </div>
+      <NewsLetter />
       <br></br>
     </div>
   );

@@ -10,7 +10,7 @@ const LoadingWrapper = ({ children }) => {
     setIsLoading(true);
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 200);
 
     return () => clearTimeout(timer);
   }, [location]);

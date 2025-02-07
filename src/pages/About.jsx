@@ -1,31 +1,25 @@
-import { HiHome } from "react-icons/hi";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaPinterestP,
-  FaTwitter,
-} from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+import NewsLetter from "../component/NewsLetter";
 import TeamSliding from "../component/TeamSliding";
 import Testimonial from "../component/Testimonial";
 
 export default function About() {
-   
   return (
-    <div className="bg-[#C5EAD9C7]">
+    <div className="bg-[#C5EAD9C7] max-w-[1500px] mx-auto">
       <br></br>
       <div className="mt-16 md:mt-36 text-[#ADADAD] bg-[url('/shop-filter/bg-banner.png')] bg-cover  min-h-[120px] items-center flex ps-10 md:ps-32 mb-6 ">
         <div className="flex items-center">
-          <HiHome />
-
-          <p className="text-[#3BB77E]">/ About Us</p>
+          <img src="/home-icon.png" alt="img" className="me-3" />
+          <FaChevronRight />
+          <p className="text-[#3BB77E] ml-2"> About Us</p>
         </div>
       </div>
 
-      <section className="bg-gray-50 py-12 px-4 sm:px-8 lg:px-16">
+      <section className="bg-white py-12 px-4 sm:px-8 lg:px-16">
         <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16">
           {/* Text Section */}
           <div className="lg:w-1/2 text-center lg:text-left">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-[48px] font-bold leading-[57px] text-[#1A1A1A] mb-4">
               100% Trusted <br /> Organic Food Store
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -49,7 +43,7 @@ export default function About() {
       </section>
 
       {/* organic store */}
-      <section className="bg-gray-50 py-12 px-4 sm:px-8 lg:px-16">
+      <section className="bg-white py-12 px-4 sm:px-8 lg:px-16">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
           {/* Left Section: Image */}
           <div className="lg:w-1/2">
@@ -62,7 +56,7 @@ export default function About() {
 
           {/* Right Section: Content */}
           <div className="lg:w-1/2">
-            <h2 className="text-3xl sm:text-4xl font-bold text-green-800 mb-4">
+            <h2 className="text-3xl sm:text-[48px] font-bold leading-[57px] text-[#002603] mb-4">
               100% Trusted <br /> Organic Food Store
             </h2>
             <p className="text-gray-700 leading-relaxed mb-6">
@@ -79,7 +73,7 @@ export default function About() {
                   <img src="/about/Icon1.png" className="w-12 h-12" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium text-gray-800">
+                  <h4 className="text-[16px] font-[600] text-[#1A1A1A]">
                     100% Organic Food
                   </h4>
                   <p className="text-gray-600 text-sm">
@@ -94,7 +88,7 @@ export default function About() {
                   <img src="/about/Icon2.png" className="w-12 h-12" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium text-gray-800">
+                  <h4 className="text-[16px] font-[600] text-[#1A1A1A]">
                     Customer Feedback
                   </h4>
                   <p className="text-gray-600 text-sm">Our happy customer</p>
@@ -107,7 +101,7 @@ export default function About() {
                   <img src="/about/Icon3.png" className="w-12 h-12" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium text-gray-800">
+                  <h4 className="text-[16px] font-[600] text-[#1A1A1A]">
                     Free Shipping
                   </h4>
                   <p className="text-gray-600 text-sm">
@@ -122,7 +116,7 @@ export default function About() {
                   <img src="/about/Icon4.png" className="w-12 h-12" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium text-gray-800">
+                  <h4 className="text-[16px] font-[600] text-[#1A1A1A]">
                     Great Support 24/7
                   </h4>
                   <p className="text-gray-600 text-sm">
@@ -137,7 +131,7 @@ export default function About() {
                   <img src="/about/Icon5.png" className="w-12 h-12" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium text-gray-800">
+                  <h4 className="text-[16px] font-[600] text-[#1A1A1A]">
                     100% Secure Payment
                   </h4>
                   <p className="text-gray-600 text-sm">
@@ -152,7 +146,7 @@ export default function About() {
                   <img src="/about/Icon6.png" className="w-12 h-12" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium text-gray-800">
+                  <h4 className="text-[16px] font-[600] text-[#1A1A1A]">
                     100% Organic Food
                   </h4>
                   <p className="text-gray-600 text-sm">
@@ -170,9 +164,8 @@ export default function About() {
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
           {/* Left Section: Text Content */}
           <div className="lg:w-1/2 text-center lg:text-left">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
-              We Delivered, <br />
-              You Enjoy Your Order.
+            <h2 className="text-3xl sm:text-[48px] font-bold leading-[57px] text-[#1A1A1A] mb-4">
+              We Delivered, You <br /> Enjoy Your Order.
             </h2>
             <p className="text-gray-600 leading-relaxed mb-6">
               Ut suscipit egestas suscipit. Sed posuere pellentesque nunc,
@@ -184,64 +177,31 @@ export default function About() {
             {/* List of Features */}
             <ul className="mb-6 space-y-3">
               <li className="flex items-center gap-3">
-                <div className="bg-green-100 p-2 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-5 h-5 text-green-600"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
+                <img
+                  src="/about/check.png"
+                  alt="checked"
+                  className="w-[20px] h-[20px]"
+                />
                 <span className="text-gray-700">
                   Sed in metus pellentesque.
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <div className="bg-green-100 p-2 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-5 h-5 text-green-600"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
+                <img
+                  src="/about/check.png"
+                  alt="checked"
+                  className="w-[20px] h-[20px]"
+                />
                 <span className="text-gray-700">
                   Fusce et ex commodo, aliquam nulla efficitur, tempus lorem.
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <div className="bg-green-100 p-2 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-5 h-5 text-green-600"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
+                <img
+                  src="/about/check.png"
+                  alt="checked"
+                  className="w-[20px] h-[20px]"
+                />
                 <span className="text-gray-700">
                   Maecenas ut nunc fringilla erat varius.
                 </span>
@@ -249,7 +209,7 @@ export default function About() {
             </ul>
 
             {/* Call to Action */}
-            <button className="bg-green-600 text-white px-6 py-3 rounded-lg shadow hover:bg-green-700 transition">
+            <button className="bg-[#3BB77E] text-white px-6 py-3 rounded-full shadow transition">
               Shop Now →
             </button>
           </div>
@@ -269,48 +229,8 @@ export default function About() {
 
       <TeamSliding />
 
-
-<Testimonial />
-      <div className="bg-[#F7F7F7] mt-4 py-4 px-14 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-        {/* Left Text Section */}
-        <div className="max-w-[500px]">
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">
-            Subscribe to our Newsletter
-          </h3>
-          <p className="text-gray-500 text-sm">
-            Pellentesque eu nibh eget mauris congue mattis mattis nec tellus.
-            Phasellus imperdiet elit eu magna.
-          </p>
-        </div>
-
-        {/* Subscribe Form */}
-        <div className="flex items-center w-full md:w-2/5">
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="w-full p-3 text-sm border border-gray-300 rounded-l-lg focus:outline-none"
-          />
-          <button className="bg-green-500 text-white px-6 py-3 rounded-r-lg text-sm font-semibold hover:bg-green-600">
-            Subscribe
-          </button>
-        </div>
-
-        {/* Social Icons */}
-        <div className="flex space-x-4">
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaFacebookF />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaTwitter />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaPinterestP />
-          </div>
-          <div className="p-2 bg-green-100 rounded-full text-green-600">
-            <FaInstagram />
-          </div>
-        </div>
-      </div>
+      <Testimonial />
+      <NewsLetter />
       <br></br>
     </div>
   );

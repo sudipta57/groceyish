@@ -19,9 +19,9 @@ const Footer = () => {
             <div className="flex items-center space-x-2">
               <img src="/landing/mid-footer-icon-1.png" alt="" />
 
-              <p>
+              <p className="font-[600]">
                 Address :{" "}
-                <span className="font-bold">1762 School House Road</span>
+                <span className="font-[500]">1762 School House Road</span>
               </p>
             </div>
             {/* Call Us Section */}
@@ -32,8 +32,8 @@ const Footer = () => {
                 alt="Phone Icon"
                 className="w-6 h-6"
               />
-              <p>
-                Call Us: <span className="font-bold">1233-777</span>
+              <p className="font-[600]">
+                Call Us: <span className="font-[500]">1233-777</span>
               </p>
             </div>
 
@@ -44,8 +44,8 @@ const Footer = () => {
                 alt="Email Icon"
                 className="w-6 h-6"
               />
-              <p>
-                Email: <span className="font-bold">groceyish@contact.com</span>
+              <p className="font-[600]">
+                Email: <span className="font-[500]">groceyish@contact.com</span>
               </p>
             </div>
 
@@ -56,9 +56,9 @@ const Footer = () => {
                 alt="Clock Icon"
                 className="w-6 h-6"
               />
-              <p>
+              <p className="font-[600]">
                 Work hours:{" "}
-                <span className="font-bold">
+                <span className="font-[500]">
                   8:00 - 20:00, Sunday - Thursday
                 </span>
               </p>
@@ -67,7 +67,9 @@ const Footer = () => {
         </div>
         {/* Account Links */}
         <div className="p-4">
-          <h4 className="text-xl font-semibold mb-2">Account</h4>
+          <h4 className="text-[24px] font-semibold mb-2 text-[#253D4E]">
+            Account
+          </h4>
           <ul className="space-y-2">
             <li>Wishlist</li> <li>Cart</li> <li>Track Order</li>
             <li>Shipping Details</li>
@@ -75,7 +77,9 @@ const Footer = () => {
         </div>
         {/* Useful Links */}
         <div className="p-4">
-          <h4 className="text-xl font-semibold mb-2">Useful Links</h4>
+          <h4 className="text-[24px] font-semibold mb-2 text-[#253D4E]">
+            Useful Links
+          </h4>
           <ul className="space-y-2">
             <li>About Us</li> <li>Contact</li> <li>Hot deals</li>
             <li>Promotions</li> <li>New products</li>
@@ -83,7 +87,9 @@ const Footer = () => {
         </div>
         {/* Help Center */}
         <div className="p-4">
-          <h4 className="text-xl font-semibold mb-2">Help Center</h4>
+          <h4 className="text-[24px] font-semibold mb-2 text-[#253D4E]">
+            Help Center
+          </h4>
           <ul className="space-y-2">
             <li>Payments</li> <li>Refund</li> <li>Checkout</li>
             <li>Shipping</li> <li>Q&A</li> <li>Privacy Policy</li>
@@ -93,8 +99,8 @@ const Footer = () => {
       {/* Footer Information */}
       <div className="py-4">
         <div className="container mx-auto px-6 flex flex-wrap justify-between items-center text-center md:text-left">
-          Copyright @ GROCEYISH | developed by SECWEBXPERTS PVT. LTD.{" "}
-          <img src="/landing/footer-img.png" alt="" />
+          Copyright © 2024 by groceyish. All Right Reserved
+          <img src="/landing/footer-img.png" alt="img" />
           <div className="flex space-x-4">
             <img src="/landing/footer-icon1.png" alt="" />
             <img src="/landing/footer-icon2.png" alt="" />
